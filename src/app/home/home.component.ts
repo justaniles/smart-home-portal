@@ -12,6 +12,7 @@ import {Title} from './title';
     template: require('./home.html')
 })
 export class Home {
+    
     // TypeScript public modifiers
     constructor( public title: Title) {
 
