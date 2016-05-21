@@ -2,7 +2,7 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Route, Routes } from '@angular/router';
+import { ROUTER_DIRECTIVES, Route, Routes } from '@angular/router';
 
 import { Home } from './home';
 import { LoginComponent } from "./login";
@@ -13,9 +13,8 @@ import { LoginComponent } from "./login";
  */
 @Component({
     selector: 'app',
-    pipes: [],
     providers: [], // Application-wide providers should be placed in app/index.ts
-    directives: [],
+    directives: [ROUTER_DIRECTIVES],
     encapsulation: ViewEncapsulation.None,
     styles: [
         require('./app.css')

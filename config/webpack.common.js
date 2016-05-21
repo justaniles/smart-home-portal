@@ -182,7 +182,8 @@ module.exports = {
                 exclude: [helpers.root('src/index.html')]
             },
 
-            /* Raw loader support for *.scss
+            /*
+             * Raw loader support for *.scss
              * Returns file content as string
              *
              * See: https://github.com/webpack/sass-loader
