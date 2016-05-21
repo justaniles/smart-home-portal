@@ -15,6 +15,8 @@ import '@angular/router-deprecated';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+require("./assets/css/bootstrap.min.css");
+
 if ('production' === ENV) {
     // Production
 

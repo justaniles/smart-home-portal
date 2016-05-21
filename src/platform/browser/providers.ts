@@ -3,7 +3,7 @@
  */
 
 // Angular 2
-import { FORM_PROVIDERS, HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { FORM_PROVIDERS } from '@angular/common';
 // Angular 2 Http
 import { HTTP_PROVIDERS } from '@angular/http';
 // Angular 2 Router
@@ -16,6 +16,5 @@ import { ROUTER_PROVIDERS } from '@angular/router';
 export const PROVIDERS = [
     ...FORM_PROVIDERS,
     ...HTTP_PROVIDERS,
-    ...ROUTER_PROVIDERS,
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    ...ROUTER_PROVIDERS
 ];

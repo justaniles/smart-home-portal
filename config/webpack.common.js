@@ -12,6 +12,7 @@ const helpers = require('./helpers');
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 /*
  * Webpack Constants
@@ -139,55 +140,31 @@ module.exports = {
          */
         loaders: [
 
-            /*
-             * Typescript loader support for .ts and Angular 2 async routes via .async.ts
-             *
-             * See: https://github.com/s-panferov/awesome-typescript-loader
-             */
             {
                 test: /\.ts$/,
                 loader: 'awesome-typescript-loader',
                 exclude: [/\.(spec|e2e)\.ts$/]
             },
-
-            /*
-             * Json loader support for *.json files.
-             *
-             * See: https://github.com/webpack/json-loader
-             */
             {
                 test: /\.json$/,
                 loader: 'json-loader'
             },
-
-            /*
-             * Raw loader support for *.css files
-             * Returns file content as string
-             *
-             * See: https://github.com/webpack/raw-loader
-             */
             {
                 test: /\.css$/,
-                loader: 'raw-loader'
+                loader: 'raw-loader',
+                include: [helpers.root("src/app")]
             },
-
-            /* Raw loader support for *.html
-             * Returns file content as string
-             *
-             * See: https://github.com/webpack/raw-loader
-             */
+            {
+                // Bundle vendor css into a stylesheet
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract("raw-loader", "css-loader"),
+                include: [helpers.root("src/assets/css")]
+            },
             {
                 test: /\.html$/,
                 loader: 'raw-loader',
                 exclude: [helpers.root('src/index.html')]
             },
-
-            /*
-             * Raw loader support for *.scss
-             * Returns file content as string
-             *
-             * See: https://github.com/webpack/sass-loader
-             */
             {
                 test: /\.scss$/,
                 loaders: ['raw-loader', 'sass-loader'],
@@ -258,8 +235,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             chunksSortMode: 'dependency'
-        })
+        }),
 
+        new ExtractTextPlugin("[name].css")
     ],
 
     /*

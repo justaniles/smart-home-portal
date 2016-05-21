@@ -1,25 +1,19 @@
 import {Component} from '@angular/core';
 
-import {Title} from './title';
-
 @Component({
     selector: 'home',
-    providers: [
-        Title
-    ],
+    providers: [],
     directives: [],
     styles: [require('./home.css')],
     template: require('./home.html')
 })
 export class Home {
-    
-    // TypeScript public modifiers
-    constructor( public title: Title) {
+
+    constructor( ) {
 
     }
 
     ngOnInit() {
         console.log("Loaded home");
-        // this.title.getData().subscribe(data => this.data = data);
     }
 }
