@@ -1,12 +1,12 @@
-import {FORM_DIRECTIVES} from '@angular/common';
-import {ViewEncapsulation, Component} from '@angular/core';
+import { FORM_DIRECTIVES } from '@angular/common';
+import { ViewEncapsulation, Component } from '@angular/core';
 
-import {UserService} from "../shared/index";
+import { UserService } from "../shared/index";
 
 @Component({
     selector: '.pc-login',
-    templateUrl: 'app/+login/login.html',
-    styleUrls: ['app/+login/login.scss'],
+    template: require('./login.html'),
+    styles: [require('./login.scss')],
     directives: [FORM_DIRECTIVES],
     encapsulation: ViewEncapsulation.None
 })

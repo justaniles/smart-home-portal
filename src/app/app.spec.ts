@@ -1,22 +1,19 @@
 import {
     beforeEachProviders,
     inject,
-    injectAsync,
     it
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
-import {App} from './app.component';
-import {AppState} from './app.service';
+import { AppComponent } from './app.component';
 
-describe('App', () => {
+describe('AppComponent', () => {
     // provide our implementations or mocks to the dependency injector
     beforeEachProviders(() => [
-        AppState,
-        App
+        AppComponent
     ]);
 
-    it('should have a url', inject([App], (app) => {
+    it('should have a url', inject([AppComponent], (app) => {
         expect(app.url).toEqual('https://twitter.com/AngularClass');
     }));
 

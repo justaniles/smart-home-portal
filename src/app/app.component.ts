@@ -1,66 +1,41 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation} from '@angular/core';
-import {RouteConfig, Router} from '@angular/router-deprecated';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Route, Routes } from '@angular/router';
 
-import {AppState} from './app.service';
-import {Home} from './home';
-import {RouterActive} from './router-active';
+import { Home } from './home';
+import { LoginComponent } from "./login";
 
 /*
- * App Component
+ * AppComponent Component
  * Top Level Component
  */
 @Component({
     selector: 'app',
     pipes: [],
-    providers: [],
-    directives: [RouterActive],
+    providers: [], // Application-wide providers should be placed in app/index.ts
+    directives: [],
     encapsulation: ViewEncapsulation.None,
     styles: [
         require('./app.css')
     ],
-    template: `
-      <button router-active [routerLink]=" ['Index'] ">
-        Index
-      </button>
-      <button router-active [routerLink]=" ['Home'] ">
-        Home
-      </button>
-      <button router-active [routerLink]=" ['About'] ">
-        About
-      </button>
-      <router-outlet></router-outlet>
-      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-    `
+    template: require("./app.html")
 })
-@RouteConfig([
-    { path: '/', name: 'Index', component: Home, useAsDefault: true },
-    { path: '/home', name: 'Home', component: Home },
-    // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-    { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
-])
-export class App {
-    angularclassLogo = 'assets/img/angularclass-avatar.png';
-    loading = false;
-    name = 'Angular 2 Webpack Starter';
-    url = 'https://twitter.com/AngularClass';
-
-    constructor(public appState: AppState) {
-
+// TODO: Remove cast to Route[]
+@Routes(<Route[]>[
+    {
+        path: '/',
+        component: Home
+    },
+    {
+        path: "/login",
+        component: LoginComponent
     }
+])
+export class AppComponent {
 
     ngOnInit() {
-        console.log('Initial App State', this.appState.state);
+        console.log("Loaded app");
     }
-
 }
-
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */
