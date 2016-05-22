@@ -8,6 +8,5 @@ html, body {
 .main {
     width: 100%;
     height: 100%;
-    margin-top: $nav-height;
-    padding: $pd-normal;
+    padding: $nav-height + $pd-normal $pd-normal $pd-normal;
 }

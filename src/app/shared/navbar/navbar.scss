@@ -12,6 +12,11 @@
     flex-direction: column;
 }
 
+.pc-nav-left {
+    align-self: flex-start;
+    height: 100%;
+}
+
 .pc-nav-right {
     align-self: flex-end;
     height: 100%;
@@ -21,12 +26,13 @@
     height: 100%;
     display: inline-flex;
     align-items: center;
+    color: #222;
 
     & + & {
         margin-left: $pd-small;
     }
-}
 
-nav a.router-link-active {
-    color: #106cc8;
+    &.router-link-active {
+        color: #2aabd2;
+    }
 }

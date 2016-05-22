@@ -29,6 +29,10 @@ import { NavbarComponent } from "./shared";
         component: Home
     },
     {
+        path: '/home',
+        component: Home
+    },
+    {
         path: "/login",
         component: LoginComponent
     }
