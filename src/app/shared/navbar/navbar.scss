@@ -1,0 +1,32 @@
+@import "../constants";
+
+.pc-nav {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: $nav-height;
+    padding-left: $pd-normal;
+    padding-right: $pd-normal;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.pc-nav-right {
+    align-self: flex-end;
+    height: 100%;
+}
+
+.pc-nav-link {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+
+    & + & {
+        margin-left: $pd-small;
+    }
+}
+
+nav a.router-link-active {
+    color: #106cc8;
+}

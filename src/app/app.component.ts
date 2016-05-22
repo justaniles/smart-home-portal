@@ -1,23 +1,24 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
-import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
+import { Component, ViewEncapsulation } from "@angular/core";
+import { Routes, Router } from "@angular/router";
 
-import { Home } from './home';
+import { Home } from "./home";
 import { LoginComponent } from "./login";
+import { NavbarComponent } from "./shared";
 
 /*
  * AppComponent Component
  * Top Level Component
  */
 @Component({
-    selector: 'app',
+    selector: "app",
     providers: [], // Application-wide providers should be placed in app/index.ts
-    directives: [ROUTER_DIRECTIVES],
+    directives: <any>[NavbarComponent],
     encapsulation: ViewEncapsulation.None,
     styles: [
-        require('./app.css')
+        require("./app.scss")
     ],
     template: require("./app.html")
 })
@@ -37,6 +38,5 @@ export class AppComponent {
     constructor(private router: Router) {}
 
     ngOnInit() {
-        console.log("Loaded app");
     }
 }

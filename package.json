@@ -31,7 +31,7 @@
     "prebuild:prod": "npm run clean:dist",
     "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
     "server": "npm run server:dev",
-    "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --colors --watch --display-error-details --bail --content-base src/",
+    "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --colors --watch --display-error-details --content-base src/",
     "server:dev:hmr": "npm run server:dev -- --hot",
     "server:prod": "http-server dist --cors",
     "webdriver:update": "npm run webdriver-manager update",

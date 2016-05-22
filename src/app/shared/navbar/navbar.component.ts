@@ -1,14 +1,16 @@
-import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'sd-navbar',
-    templateUrl: 'app/shared/navbar/navbar.component.html',
-    styleUrls: ['app/shared/navbar/navbar.component.scss'],
-    directives: [ROUTER_DIRECTIVES]
+    selector: 'pc-navbar',
+    template: require("./navbar.html"),
+    styles: [require("./navbar.scss")],
+    encapsulation: ViewEncapsulation.None
 })
 /**
  * This class represents the navigation bar component.
  */
 export class NavbarComponent {
+
+    constructor() {
+    }
 }
