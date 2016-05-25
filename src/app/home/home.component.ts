@@ -1,22 +1,22 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { SmartObject, SmartObjectService } from "../shared";
 
 @Component({
     selector: 'home',
     providers: [SmartObjectService],
     directives: [],
-    styles: [require('./home.css')],
+    styles: [require('./home.scss')],
     template: require('./home.html')
 })
-export class Home {
+export class HomeComponent implements OnInit {
 
-    shObjects: SmartObject[];
+    smartObjects: SmartObject[];
 
     constructor(private smartObjectService: SmartObjectService) {
-        this.shObjects = this.smartObjectService.getSmartObjects();
+        this.smartObjects = this.smartObjectService.getSmartObjects();
     }
 
     ngOnInit() {
-        console.log(this.shObjects);
+        console.log(this.smartObjects);
     }
 }

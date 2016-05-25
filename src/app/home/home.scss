@@ -1,0 +1,21 @@
+@import "../shared/constants";
+
+.pc-card-wrapper {
+    width: 100%;
+}
+
+.pc-card-wrapper-inner {
+    margin: 0 -$pd-small;
+
+    @include media-breakpoint-up(lg) {
+        margin: 0 -$pd-medium;
+    }
+}
+
+.pc-card-container {
+    padding: 0 $pd-small;
+
+    @include media-breakpoint-up(lg) {
+        padding: 0 $pd-medium;
+    }
+}

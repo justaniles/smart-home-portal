@@ -1,7 +1,18 @@
-<div class="card-container">
-    <h1 x-large class="sample-content">Your Content Here</h1>
-    <div>
-        For hot module reloading run
-        <pre>npm run start:hmr</pre>
+<div class="pc-card-wrapper">
+    <div class="pc-card-wrapper-inner row">
+
+        <div *ngFor="let smartObject of smartObjects" class="pc-card-container col-xs-6 col-md-4 col-lg-3">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">{{smartObject.name}}</h4>
+                    <h6 class="card-subtitle text-muted">{{smartObject.type}}</h6>
+                    <br>
+                    <a *ngFor="let func of smartObject.supportedFunctions" class="card-link" href="#">
+                        {{func}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

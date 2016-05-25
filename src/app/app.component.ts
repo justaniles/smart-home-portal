@@ -4,7 +4,7 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { Routes, Router } from "@angular/router";
 
-import { Home } from "./home";
+import { HomeComponent } from "./home";
 import { LoginComponent } from "./login";
 import { NavbarComponent } from "./shared";
 
@@ -26,11 +26,11 @@ import { NavbarComponent } from "./shared";
 @Routes(<any>[
     {
         path: '/',
-        component: Home
+        component: HomeComponent
     },
     {
         path: '/home',
-        component: Home
+        component: HomeComponent
     },
     {
         path: "/login",

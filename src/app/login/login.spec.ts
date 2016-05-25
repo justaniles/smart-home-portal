@@ -12,7 +12,7 @@ import {NameListService} from '../shared/index';
 import {LoginComponent} from './login.component.ts';
 
 export function main() {
-    describe('Home component', () => {
+    describe('HomeComponent component', () => {
         it('should work',
             inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
                 tcb.createAsync(TestComponent)

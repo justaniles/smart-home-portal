@@ -1,10 +1,31 @@
-// Navigation:
-$nav-height: 4rem;
+// Navigation
+$nav-height: 5rem;
 
-// Padding:
+// Padding
 $pd-small: 1rem;
 $pd-medium: 2rem;
 $pd-large: 4rem;
 
 $pd-normal: $pd-medium;
 
+// -----------
+// Breakpoints
+// -----------
+$screen-breakpoints: (
+    sm: 34em,
+    md: 48em,
+    lg: 62em,
+    xl: 75em
+);
+// Wrap content with appropriate media breakpoint:
+@mixin media-breakpoint-up($name) {
+    $bp-size: map_get($screen-breakpoints, $name);
+    @if ($bp-size) {
+        @media (min-width: $bp-size) {
+            @content;
+        }
+    }
+    @else {
+        @content;
+    }
+}

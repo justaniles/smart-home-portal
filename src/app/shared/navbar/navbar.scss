@@ -5,11 +5,14 @@
     top: 0px;
     width: 100%;
     height: $nav-height;
-    padding-left: $pd-normal;
-    padding-right: $pd-normal;
+    padding: 0 $pd-small;
 
     display: flex;
     flex-direction: column;
+
+    @include media-breakpoint-up(lg) {
+        padding: 0 $pd-medium;
+    }
 }
 
 .pc-nav-left {

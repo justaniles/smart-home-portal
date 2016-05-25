@@ -1,4 +1,4 @@
-describe('Home', () => {
+describe('HomeComponent', () => {
 
     beforeEach(() => {
         browser.get('/');
