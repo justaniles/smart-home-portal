@@ -1,4 +1,4 @@
-import { SHObject } from "./sh-objects.interface.ts";
+import { SmartObject } from "./smart-object.interfaces.ts";
 
 const MOCK_TYPES = [
     "Lightbulb",
@@ -24,17 +24,17 @@ const MOCK_FUNCTIONS = [
     "SetHairColor"
 ];
 
-export function generateMockSHObjects(count: number): SHObject[] {
+export function generateMockSmartObjects(count: number): SmartObject[] {
     const generatedObjects = [];
 
-    let obj: SHObject;
+    let obj: SmartObject;
     for (let i = 0; i < count; i++) {
         obj = {
             id: "" + i,
             name: selectRandom(MOCK_NAMES),
             type: selectRandom(MOCK_TYPES),
             supportedFunctions: [selectRandom(MOCK_FUNCTIONS), selectRandom(MOCK_FUNCTIONS)]
-        }
+        };
         generatedObjects.push(obj);
     }
 

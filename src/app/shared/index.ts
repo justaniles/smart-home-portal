@@ -4,4 +4,4 @@
  */
 export * from "./navbar";
 export * from "./user";
-export * from "./smart-home-objects";
+export * from "./smart-object";

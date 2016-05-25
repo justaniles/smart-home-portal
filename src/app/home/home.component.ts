@@ -1,19 +1,19 @@
 import { Component } from "@angular/core";
-import { SHObject, SHObjectsService } from "../shared";
+import { SmartObject, SmartObjectService } from "../shared";
 
 @Component({
     selector: 'home',
-    providers: [SHObjectsService],
+    providers: [SmartObjectService],
     directives: [],
     styles: [require('./home.css')],
     template: require('./home.html')
 })
 export class Home {
 
-    shObjects: SHObject[];
+    shObjects: SmartObject[];
 
-    constructor(private shoService: SHObjectsService) {
-        this.shObjects = this.shoService.getSHObjects();
+    constructor(private smartObjectService: SmartObjectService) {
+        this.shObjects = this.smartObjectService.getSmartObjects();
     }
 
     ngOnInit() {

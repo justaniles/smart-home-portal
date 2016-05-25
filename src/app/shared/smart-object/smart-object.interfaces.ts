@@ -1,4 +1,4 @@
-export interface SHObject {
+export interface SmartObject {
     id: string;
     name: string;
     type: string;
