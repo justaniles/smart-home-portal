@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# A POSIX variable
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
+
+# Local variables
+buildProdCommand='npm run build:prod'
+deployCommand='git subtree push --prefix dist origin gh-pages'
+runBuild=false
+
+show_help() {
+local formattedString
+formattedString=${0##*/}
+formattedString=${formattedString%%\.*}
+cat << EOF
+Usage: ${formattedString} [-b]
+    -b  Run npm build:prod before deploying
+EOF
+}
+
+while getopts ":bh?" opt; do
+    case ${opt} in
+        b)
+            runBuild=true
+            ;;
+        h|?)
+            show_help
+            exit 1
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+if [ "$runBuild" = true ]; then
+    echo 'Running:' ${buildProdCommand}
+    eval ${buildProdCommand}
+fi
+
+echo 'Running:' ${deployCommand}
+eval ${deployCommand}
