@@ -18,6 +18,14 @@ function root(args) {
     return path.join.apply(path, [ROOT].concat(args));
 }
 
+function projectName() {
+    var rootPathArray = ROOT.split("/");
+    var rootDirName = rootPathArray.pop();
+    return "/" + rootDirName + "/";
+}
 
-exports.hasProcessFlag = hasProcessFlag;
-exports.root = root;
+module.exports = {
+    hasProcessFlag: hasProcessFlag,
+    root: root,
+    projectName: projectName
+};

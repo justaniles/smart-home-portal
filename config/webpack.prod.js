@@ -60,6 +60,8 @@ module.exports = webpackMerge(commonConfig, {
          */
         path: helpers.root('dist'),
 
+        publicPath: helpers.projectName(),
+
         /**
          * Specifies the name of each output file on disk.
          * IMPORTANT: You must not specify an absolute path here!
