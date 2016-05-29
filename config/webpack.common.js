@@ -18,8 +18,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
  * Webpack Constants
  */
 const METADATA = {
-    title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
-    baseUrl: '/'
+    title: 'Smart Home Portal',
+    baseUrl: '/',
+    assets: "/assets"
 };
 
 /*

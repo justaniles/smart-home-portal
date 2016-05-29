@@ -27,7 +27,9 @@ const METADATA = webpackMerge(commonConfig.metadata, {
     port: PORT,
     ENV: ENV,
     HMR: false,
-    baseUrl: '/smart-home-portal'
+    // Have this set for gh-pages on GitHub
+    baseUrl: '/smart-home-portal',
+    assets: baseUrl + "/assets"
 });
 
 module.exports = webpackMerge(commonConfig, {
