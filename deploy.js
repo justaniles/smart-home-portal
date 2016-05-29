@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-const spawnSync = require("child_process").spawnSync;
+const execSync = require("child_process").execSync;
 const yargs = require("yargs");
 const argv = yargs.options({
         "b": {
@@ -37,16 +37,22 @@ if (runBuild) {
 
 if (runDeploy) {
     // Fail if there are uncommitted changes
-    let checkIndex = spawnSync("git diff-index --quiet --cached HEAD");
-    if (checkIndex.status !== 0) {
+    let dirtyIndex = false;
+    try {
+        execSync("git diff-index --quiet --cached HEAD");
+    } catch (err) {
+        dirtyIndex = (err.status === 1);
+    }
+
+    if (dirtyIndex) {
         // TODO: automatically stash changes
         console.error("There are uncommitted changes in your index. Please commit or stash them first.");
         process.exit();
     }
     // Push changes in dist folder to gh-pages branch
     console.log("\nTemporarily adding dist to repository");
-    spawnSync("git add -f dist");
-    spawnSync("git commit -m 'Update prod build'");
+    execSync("git add -f dist");
+    execSync("git commit -m 'Update prod build'");
     console.log(`\nRunning: ${deployCommand}`);
-    spawnSync(deployCommand);
+    execSync(deployCommand);
 }
