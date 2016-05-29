@@ -37,17 +37,16 @@ if (runBuild) {
 
 if (runDeploy) {
     // Fail if there are uncommitted changes
-    let checkIndex = spawnSync("git diff-index --quiet --cached HEAD -G [^dist]");
+    let checkIndex = spawnSync("git diff-index --quiet --cached HEAD");
     if (checkIndex.status !== 0) {
-        console.error("There are uncommitted changes in your index (outside the dist folder). Please commit or stash them first!");
+        // TODO: automatically stash changes
+        console.error("There are uncommitted changes in your index. Please commit or stash them first.");
         process.exit();
     }
-    // Check if dist folder is dirty
-    let result = spawnSync("git diff-files --quiet dist");
-    if (result.status !== 0) {
-        console.log("\nDirty working tree for dist/ directory. Committing changes...");
-        spawnSync("git add dist");
-        syawnSync("git commit -m 'Update prod build'");
-    }
+    // Push changes in dist folder to gh-pages branch
+    console.log("\nTemporarily adding dist to repository");
+    spawnSync("git add -f dist");
+    spawnSync("git commit -m 'Update prod build'");
     console.log(`\nRunning: ${deployCommand}`);
+    spawnSync(deployCommand);
 }
