@@ -28,9 +28,9 @@ const METADATA = webpackMerge(commonConfig.metadata, {
     ENV: ENV,
     HMR: false,
     // Have this set for gh-pages on GitHub
-    baseUrl: '/smart-home-portal',
-    assets: baseUrl + "/assets"
+    baseUrl: '/smart-home-portal'
 });
+METADATA.assets = METADATA.baseUrl + "/assets"
 
 module.exports = webpackMerge(commonConfig, {
 
