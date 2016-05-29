@@ -26,10 +26,13 @@ const METADATA = webpackMerge(commonConfig.metadata, {
     host: HOST,
     port: PORT,
     ENV: ENV,
-    HMR: false
+    HMR: false,
+    baseUrl: '/smart-home-portal'
 });
 
 module.exports = webpackMerge(commonConfig, {
+
+    metadata: METADATA,
 
     /**
      * Switch loaders to debug mode.
@@ -60,7 +63,7 @@ module.exports = webpackMerge(commonConfig, {
          */
         path: helpers.root('dist'),
 
-        publicPath: helpers.projectName(),
+        publicPath: METADATA.baseUrl,
 
         /**
          * Specifies the name of each output file on disk.
