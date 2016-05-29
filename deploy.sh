@@ -7,6 +7,7 @@ OPTIND=1         # Reset in case getopts has been used previously in the shell.
 buildProdCommand='npm run build:prod'
 deployCommand='git subtree push --prefix dist origin gh-pages'
 runBuild=false
+deploy=false
 
 show_help() {
 local formattedString
@@ -18,10 +19,13 @@ Usage: ${formattedString} [-b]
 EOF
 }
 
-while getopts ":bh?" opt; do
+while getopts ":bdh?" opt; do
     case ${opt} in
         b)
             runBuild=true
+            ;;
+        d)
+            deploy=true
             ;;
         h|?)
             show_help
@@ -41,5 +45,8 @@ if [ "$runBuild" = true ]; then
     eval ${buildProdCommand}
 fi
 
-echo 'Running:' ${deployCommand}
-eval ${deployCommand}
+if [ "$deploy" = true ]; then
+    echo 'Running:' ${deployCommand}
+    eval ${deployCommand}
+fi
+
