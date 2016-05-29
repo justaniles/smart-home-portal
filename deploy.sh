@@ -45,6 +45,12 @@ if [ "$runBuild" = true ]; then
     eval ${buildProdCommand}
 fi
 
+if [ "$runBuild" = true ] && [ "$deploy" = true ]; then
+    echo 'Committing changes in dist'
+    git add dist
+    git commit -m "Update prod build"
+fi
+
 if [ "$deploy" = true ]; then
     echo 'Running:' ${deployCommand}
     eval ${deployCommand}
