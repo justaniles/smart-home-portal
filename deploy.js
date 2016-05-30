@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-const execSync = require("child_process").execSync;
+const cp = require("child_process");
 const yargs = require("yargs");
 const argv = yargs.options({
         "b": {
@@ -13,6 +13,11 @@ const argv = yargs.options({
             alias: "deploy",
             describe: "Deploy the project to gh-pages",
             boolean: true
+        },
+        "q": {
+            alias: "quiet",
+            describe: "Minimal output from commands",
+            boolean: true
         }
     })
     .help("h").alias("h", "help")
@@ -20,11 +25,9 @@ const argv = yargs.options({
     .argv;
 
 // Local variables:
-let buildProdCommand = "npm run build:prod";
-let deployCommand = "git subtree push --prefix dist origin gh-pages";
-
 let runBuild = argv.b;
 let runDeploy = argv.d;
+let quiet = argv.q;
 
 if (!(runBuild || runDeploy)) {
     yargs.showHelp();
@@ -32,27 +35,34 @@ if (!(runBuild || runDeploy)) {
 }
 
 if (runBuild) {
-    console.log(`\nRunning: ${buildProdCommand}`);
+    console.log("Building for production...");
+    runCommand("npm", ["run", "build:prod"]);
 }
 
 if (runDeploy) {
     // Fail if there are uncommitted changes
-    let dirtyIndex = false;
-    try {
-        execSync("git diff-index --quiet --cached HEAD");
-    } catch (err) {
-        dirtyIndex = (err.status === 1);
-    }
-
-    if (dirtyIndex) {
+    let exitCode = runCommand("git", ["diff-index", "--quiet", "--cached", "HEAD"]);
+    if (exitCode !== 0) {
         // TODO: automatically stash changes
         console.error("There are uncommitted changes in your index. Please commit or stash them first.");
         process.exit();
     }
-    // Push changes in dist folder to gh-pages branch
-    console.log("\nTemporarily adding dist to repository");
-    execSync("git add -f dist");
-    execSync("git commit -m 'Update prod build'");
-    console.log(`\nRunning: ${deployCommand}`);
-    execSync(deployCommand);
+
+    console.log("Adding dist to repository...");
+    runCommand("git", ["add", "dist"]);
+    runCommand("git", ["commit", "-m", "'Update prod build'"]);
+    console.log("Pushing to gh-pages...");
+    runCommand("git", ["subtree", "push", "--prefix", "dist", "origin", "gh-pages"]);
+}
+
+console.log("Done!");
+
+// Helper functions:
+function runCommand(command, args) {
+    let options = {};
+    if (!quiet) {
+        options["stdio"] = "inherit";
+    }
+    let result = cp.spawnSync(command, args, options);
+    return result.status;
 }
