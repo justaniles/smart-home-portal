@@ -44,7 +44,13 @@ if (runDeploy) {
     let exitCode = runCommand("git", ["diff-index", "--quiet", "--cached", "HEAD"]);
     if (exitCode !== 0) {
         // TODO: automatically stash changes
-        console.error("There are uncommitted changes in your index. Please commit or stash them first.");
+        console.error("Deployment failure: There are uncommitted changes in your index. Please commit or stash them first.");
+        process.exit();
+    }
+    // Fail if unpushed commits
+    exitCode = runCommand("git", ["diff-tree", "@{u}", "HEAD", "--quiet"]);
+    if (exitCode !== 0) {
+        console.error("Deployment failure: There are unpushed changes in your local repo. Please push them first.");
         process.exit();
     }
 
