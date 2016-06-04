@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 "use strict";
 
-const cp = require("child_process");
+const ghpages = require("gh-pages");
+const path = require("path");
 const yargs = require("yargs");
 const argv = yargs.options({
         "b": {
@@ -40,29 +41,23 @@ if (runBuild) {
 }
 
 if (runDeploy) {
-    // Fail if there are uncommitted changes
-    let exitCode = runCommand("git", ["diff-index", "--quiet", "--cached", "HEAD"]);
-    if (exitCode !== 0) {
-        // TODO: automatically stash changes
-        console.error("Deployment failure: There are uncommitted changes in your index. Please commit or stash them first.");
-        process.exit();
-    }
-    // Fail if unpushed commits
-    exitCode = runCommand("git", ["diff-tree", "@{u}", "HEAD", "--quiet"]);
-    if (exitCode !== 0) {
-        console.error("Deployment failure: There are unpushed changes in your local repo. Please push them first.");
-        process.exit();
-    }
-
-    console.log("Adding dist to repository...");
-    runCommand("git", ["add", "dist"]);
-    runCommand("git", ["commit", "-m", "'Update prod build'"]);
-    console.log("Pushing to gh-pages...");
-    runCommand("git", ["subtree", "push", "--prefix", "dist", "origin", "gh-pages"]);
+    console.log("Deploying to gh-pages...");
+    ghpages.publish(path.join(__dirname, "dist"),
+        {
+            message: "Auto-generated commit",
+            logger: function(message) {
+                console.log(message);
+            }
+        },
+        function(err) {
+            if (err) {
+                console.error(`Finished with errors:\n${err}`);
+                return;
+            }
+            console.log("Done!");
+        }
+    );
 }
-
-console.log("Done!");
-
 
 // Helper functions:
 function runCommand(command, args) {
