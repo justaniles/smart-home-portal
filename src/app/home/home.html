@@ -1,13 +1,13 @@
 <div class="pc-card-wrapper">
     <div class="pc-card-wrapper-inner row">
 
-        <div *ngFor="let smartObject of smartObjects" class="pc-card-container col-xs-6 col-md-4 col-lg-3">
+        <div *ngFor="let device of devices" class="pc-card-container col-xs-6 col-md-4 col-lg-3">
             <div class="card">
                 <div class="card-block">
-                    <h4 class="card-title">{{smartObject.name}}</h4>
-                    <h6 class="card-subtitle text-muted">{{smartObject.type}}</h6>
+                    <h4 class="card-title">{{device.name}}</h4>
+                    <h6 class="card-subtitle text-muted">{{device.description}}</h6>
                     <br>
-                    <a *ngFor="let func of smartObject.supportedFunctions" class="card-link" href="#">
+                    <a *ngFor="let func of device.deviceDefinition.supportedFunctions" class="card-link" href="#">
                         {{func}}
                     </a>
                 </div>

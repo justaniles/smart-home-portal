@@ -1,8 +1,9 @@
 export * from './app.component';
 
-import { UserService } from "./shared";
+import { UserService, DeviceDefinitionService } from "./shared";
 
 // Application wide providers
 export const APP_PROVIDERS = [
-    UserService
+    UserService,
+    DeviceDefinitionService
 ];

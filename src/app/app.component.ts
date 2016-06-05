@@ -22,7 +22,7 @@ import { NavbarComponent } from "./shared";
     ],
     template: require("./app.html")
 })
-// TODO: Remove cast to Route[]
+// TODO: Remove cast to <any>
 @Routes(<any>[
     {
         path: '/',

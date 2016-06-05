@@ -4,4 +4,5 @@
  */
 export * from "./navbar";
 export * from "./user";
-export * from "./smart-object";
+export * from "./device";
+export * from "./device-definition";
