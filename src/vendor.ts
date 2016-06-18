@@ -15,11 +15,14 @@ import '@angular/router-deprecated';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+// Q Promises
+import "q";
+
+// Bootstrap
 require("./assets/css/bootstrap.min.css");
 
 if ('production' === ENV) {
     // Production
-
 
 } else {
     // Development

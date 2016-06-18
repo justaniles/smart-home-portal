@@ -1,20 +1,17 @@
-/*
- * Angular 2 decorators and services
- */
 import { Component, ViewEncapsulation } from "@angular/core";
 import { Routes, Router } from "@angular/router";
 
 import { HomeComponent } from "./home";
 import { LoginComponent } from "./login";
-import { NavbarComponent } from "./shared";
+import { NavbarComponent, DevicesService, DeviceDefinitionService } from "./shared";
+import 'rxjs/add/operator/map';
 
 /*
- * AppComponent Component
- * Top Level Component
+ * Top Level Application Component
  */
 @Component({
     selector: "app",
-    providers: [], // Application-wide providers should be placed in app/index.ts
+    providers: [DevicesService, DeviceDefinitionService],
     directives: <any>[NavbarComponent],
     encapsulation: ViewEncapsulation.None,
     styles: [
@@ -39,7 +36,8 @@ import { NavbarComponent } from "./shared";
 ])
 export class AppComponent {
 
-    constructor(private router: Router) {}
+    constructor(private router: Router) {
+    }
 
     ngOnInit() {
     }

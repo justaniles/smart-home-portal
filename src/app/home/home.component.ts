@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Device, DevicesService } from "../shared";
+import { Device, DevicesService, DeviceDefinitionService } from "../shared";
 
 @Component({
     selector: 'home',
-    providers: [DevicesService],
+    providers: [DevicesService, DeviceDefinitionService],
     directives: [],
     styles: [require('./home.scss')],
     template: require('./home.html')
