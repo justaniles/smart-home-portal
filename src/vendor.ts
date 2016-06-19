@@ -12,8 +12,10 @@ import '@angular/http';
 import '@angular/router-deprecated';
 
 // RxJS
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import "rxjs/add/operator/catch";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
+import "rxjs/add/observable/throw";
 
 // Q Promises
 import "q";

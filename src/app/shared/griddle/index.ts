@@ -1,2 +1,2 @@
+export * from "./griddle.constants";
 export * from "./griddle.service";
-export * from "./griddle-api";

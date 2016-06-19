@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Headers, Http, Response, RequestOptions, RequestMethod } from '@angular/http';
+import { GriddleConstants } from "./griddle.constants";
 
 import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/map";
 
 @Injectable()
 export class GriddleService {
@@ -10,23 +10,35 @@ export class GriddleService {
     constructor(private http: Http) {
     }
 
-    apiCall(method: RequestMethod, url: string, body?: string): Observable<any> {
+    apiCall(method: RequestMethod, urlPath: string, body?: string): Observable<any> {
         let options = new RequestOptions({
             method: method,
             headers: this.getRequestHeaders(),
             body: body
         });
-        let observable = this.http.request(url, options)
+        let fullUrl = this.formatUrl(urlPath);
+
+        let observable = this.http.request(fullUrl, options)
             .map((res: Response) => {
                 let body = res.json();
-                return body.data || {};
+                return body.Data || {};
+            })
+            .catch((err: any) => {
+                let errMessage = JSON.stringify(err, null, 4);
+                console.error(`[Griddle Service] ERROR ${errMessage}`);
+                return Observable.throw(err);
             });
         return observable;
     }
 
+    private formatUrl(urlPath: string): string {
+        let url = GriddleConstants.BaseUrl + urlPath;
+        return url;
+    }
+
     private getRequestHeaders(): Headers {
         let headers = new Headers({
-            "sh-name": "YxNgFJQ3SK19o0s//LD4IfNHnjlE7ZjS3hs+QWkp3AF6k9UkO+f+SM/gxFe9Ib3CiyHmZbxOlmOh3jbeBPgWPg=="
+            "sh-auth": "YxNgFJQ3SK19o0s//LD4IfNHnjlE7ZjS3hs+QWkp3AF6k9UkO+f+SM/gxFe9Ib3CiyHmZbxOlmOh3jbeBPgWPg=="
         });
         return headers;
     }

@@ -3,15 +3,23 @@ import { Routes, Router } from "@angular/router";
 
 import { HomeComponent } from "./home";
 import { LoginComponent } from "./login";
-import { NavbarComponent, DevicesService, DeviceDefinitionService } from "./shared";
-import 'rxjs/add/operator/map';
+import {
+    NavbarComponent,
+    DevicesService,
+    DeviceDefinitionService,
+    GriddleService
+} from "./shared";
 
 /*
  * Top Level Application Component
  */
 @Component({
     selector: "app",
-    providers: [DevicesService, DeviceDefinitionService],
+    providers: [
+        DevicesService,
+        DeviceDefinitionService,
+        GriddleService
+    ],
     directives: <any>[NavbarComponent],
     encapsulation: ViewEncapsulation.None,
     styles: [
@@ -19,8 +27,7 @@ import 'rxjs/add/operator/map';
     ],
     template: require("./app.html")
 })
-// TODO: Remove cast to <any>
-@Routes(<any>[
+@Routes([
     {
         path: '/',
         component: HomeComponent

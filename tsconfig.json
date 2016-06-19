@@ -8,13 +8,10 @@
     "noEmitHelpers": true
   },
   "exclude": [
-    "./node_modules",
-    "./typings/main.d.ts",
-    "./typings/main"
+    "node_modules"
   ],
-  "filesGlob": [
+  "include": [
     "./src/client/**/*.ts",
-    "!./node_modules/**",
     "./src/custom-typings.d.ts",
     "./typings/index.d.ts"
   ],
