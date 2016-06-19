@@ -20,7 +20,7 @@ import {
         DeviceDefinitionService,
         GriddleService
     ],
-    directives: <any>[NavbarComponent],
+    directives: [NavbarComponent],
     encapsulation: ViewEncapsulation.None,
     styles: [
         require("./app.scss")

@@ -2,16 +2,7 @@
     <div class="pc-card-wrapper-inner row">
 
         <div *ngFor="let device of devices" class="pc-card-container col-xs-6 col-md-4 col-lg-3">
-            <div class="card">
-                <div class="card-block">
-                    <h4 class="card-title">{{device.name}}</h4>
-                    <h6 class="card-subtitle text-muted">{{device.description}}</h6>
-                    <br>
-                    <a *ngFor="let func of device.deviceDefinition.supportedFunctions" class="card-link" href="#">
-                        {{func}}
-                    </a>
-                </div>
-            </div>
+            <device-card [deviceDetails]="device"></device-card>
         </div>
 
     </div>
