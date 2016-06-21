@@ -20,7 +20,7 @@ import "rxjs/add/observable/throw";
 // Q Promises
 import "q";
 
-// Bootstrap
+// CSS
 require("./assets/css/bootstrap.min.css");
 
 if ('production' === ENV) {

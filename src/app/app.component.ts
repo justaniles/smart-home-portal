@@ -4,9 +4,10 @@ import { Routes, Router } from "@angular/router";
 import { HomeComponent } from "./home";
 import { LoginComponent } from "./login";
 import {
-    NavbarComponent,
     DevicesService,
     DeviceDefinitionService,
+    NavbarComponent,
+    UserService,
     GriddleService
 } from "./shared";
 
@@ -18,7 +19,8 @@ import {
     providers: [
         DevicesService,
         DeviceDefinitionService,
-        GriddleService
+        GriddleService,
+        UserService
     ],
     directives: [NavbarComponent],
     encapsulation: ViewEncapsulation.None,
