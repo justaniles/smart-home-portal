@@ -29,6 +29,10 @@
  *
  */
 
+// Extend string prototype
+interface String {
+    format(...args: any[]): string;
+}
 
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
 declare var ENV: string;

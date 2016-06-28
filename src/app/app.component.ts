@@ -4,11 +4,8 @@ import { Routes, Router } from "@angular/router";
 import { HomeComponent } from "./home";
 import { LoginComponent } from "./login";
 import {
-    DevicesService,
-    DeviceDefinitionService,
     NavbarComponent,
-    UserService,
-    GriddleService
+    UserService
 } from "./shared";
 
 /*
@@ -17,9 +14,6 @@ import {
 @Component({
     selector: "app",
     providers: [
-        DevicesService,
-        DeviceDefinitionService,
-        GriddleService,
         UserService
     ],
     directives: [NavbarComponent],

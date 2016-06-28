@@ -29,13 +29,17 @@
     height: 100%;
     display: inline-flex;
     align-items: center;
-    color: #222;
+    color: $pc-white;
 
     & + & {
         margin-left: $pd-small;
     }
 
+    &:hover {
+        color: $pc-gray-light;
+    }
+
     &.router-link-active {
-        color: #2aabd2;
+        color: $pc-blue;
     }
 }

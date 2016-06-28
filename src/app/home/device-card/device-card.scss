@@ -2,8 +2,9 @@
 
 .pc-device-card {
     position: relative;
+    border: none;
     border-radius: $border-radius-sm;
-    height: 12rem;
+    height: 14rem;
 }
 
 .pc-device-card-dropdown-button {
@@ -22,7 +23,7 @@
     }
 
     &:active {
-        background-color: $pc-gray;
+        background-color: $pc-gray-light;
     }
 }
 
@@ -40,6 +41,7 @@
     margin: 0;
     padding: $pd-small 0;
     border: 1px solid $pc-gray;
+    border-radius: $border-radius-sm;
     overflow: auto;
     z-index: 2;
 
@@ -54,10 +56,10 @@
         align-items: center;
         justify-content: flex-start;
 
-        padding: $pd-medium $pd-small;
+        padding: $pd-small $pd-small;
 
         &:hover {
-            background-color: $pc-gray;
+            background-color: $pc-gray-light;
         }
     }
 

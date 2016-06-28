@@ -1,8 +1,11 @@
 // ----------
 // Colors
 // ----------
-$pc-gray: #eeeeee;
-$pc-white: #fefefe;
+$pc-blue: rgb(45, 196, 238);
+$pc-gray: rgb(100, 100, 100);
+$pc-gray-dark: rgb(41, 41, 41);
+$pc-gray-light: rgb(200, 200, 200);
+$pc-white: rgb(255, 255, 255);
 
 // ----------
 // Navigation
@@ -18,7 +21,7 @@ $pd-large: 4rem;
 
 $pd-normal: $pd-medium;
 
-$border-radius-sm: 0.25rem;
+$border-radius-sm: 0.2rem;
 
 // -----------
 // Breakpoints

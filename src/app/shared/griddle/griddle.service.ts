@@ -11,14 +11,14 @@ export class GriddleService {
     }
 
     apiCall(method: RequestMethod, urlPath: string, body?: string): Observable<any> {
-        let options = new RequestOptions({
+        const options = new RequestOptions({
             method: method,
             headers: this.getRequestHeaders(),
             body: body
         });
-        let fullUrl = this.formatUrl(urlPath);
+        const fullUrl = this.formatUrl(urlPath);
 
-        let observable = this.http.request(fullUrl, options)
+        const observable = this.http.request(fullUrl, options)
             .map((res: Response) => {
                 let body = res.json();
                 return body.Data || {};
@@ -32,12 +32,12 @@ export class GriddleService {
     }
 
     private formatUrl(urlPath: string): string {
-        let url = GriddleConstants.BaseUrl + urlPath;
+        const url = GriddleConstants.BaseUrl + urlPath;
         return url;
     }
 
     private getRequestHeaders(): Headers {
-        let headers = new Headers({
+        const headers = new Headers({
             "sh-auth": "YxNgFJQ3SK19o0s//LD4IfNHnjlE7ZjS3hs+QWkp3AF6k9UkO+f+SM/gxFe9Ib3CiyHmZbxOlmOh3jbeBPgWPg=="
         });
         return headers;

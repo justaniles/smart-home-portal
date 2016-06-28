@@ -9,7 +9,6 @@ import '@angular/platform-browser-dynamic';
 import '@angular/core';
 import '@angular/common';
 import '@angular/http';
-import '@angular/router-deprecated';
 
 // RxJS
 import "rxjs/add/operator/catch";
@@ -20,13 +19,10 @@ import "rxjs/add/observable/throw";
 // Q Promises
 import "q";
 
+// Add String.format to the String prototype
+var stringFormat = require("string-format");
+stringFormat.extend(String.prototype, {});
+
 // CSS
 require("./assets/css/bootstrap.min.css");
 
-if ('production' === ENV) {
-    // Production
-
-} else {
-    // Development
-
-}

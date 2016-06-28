@@ -15,8 +15,7 @@ export function main(): Promise<any> {
         enableProdMode();
     }
 
-    // TODO: remove 'any' type cast
-    return bootstrap(<any>AppComponent, [
+    return bootstrap(AppComponent, [
         ROUTER_PROVIDERS,
         PIPES,
         DIRECTIVES,

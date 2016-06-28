@@ -2,10 +2,14 @@
 
 .pc-card-wrapper {
     width: 100%;
+
+    display: flex;
+    justify-content: center;
 }
 
 .pc-card-wrapper-inner {
     margin: 0 -$pd-small;
+    max-width: map_get($screen-breakpoints, lg);
 
     @include media-breakpoint-up(lg) {
         margin: 0 -$pd-medium;
@@ -13,9 +17,9 @@
 }
 
 .pc-card-container {
-    padding: 0 $pd-small;
+    padding: 0;
 
     @include media-breakpoint-up(lg) {
-        padding: 0 $pd-medium;
+        padding: 0 $pd-small;
     }
 }
