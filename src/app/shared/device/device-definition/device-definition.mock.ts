@@ -1,4 +1,4 @@
-import { DeviceDefinition } from "./device-definition.interface";
+import { DeviceDefinition } from "./device-definition.model";
 
 const MOCK_OBJECTS: DeviceDefinition[] = [
     {

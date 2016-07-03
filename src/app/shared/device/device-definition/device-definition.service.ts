@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-import { DeviceDefinition } from "./device-definition.interface";
+import { DeviceDefinition } from "./device-definition.model";
 import * as MockHelper from "./device-definition.mock";
 import {
     GriddleConstants,
@@ -44,7 +44,7 @@ export class DeviceDefinitionService {
         return this._loadedDefinitions.getValue();
     }
 
-    getObservableDeviceDefinitions(): Observable<DeviceDefinition[]> {
+    getDeviceDefinitionsObservable(): Observable<DeviceDefinition[]> {
         return this._loadedDefinitions.asObservable();
     }
 }

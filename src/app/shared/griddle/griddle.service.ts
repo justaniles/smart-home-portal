@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Headers, Http, Response, RequestOptions, RequestMethod } from '@angular/http';
 import { GriddleConstants } from "./griddle.constants";
-
 import { Observable } from "rxjs/Observable";
+
+import PcDiagnostics = PcPortal.Diagnostics;
 
 @Injectable()
 export class GriddleService {
@@ -24,8 +25,12 @@ export class GriddleService {
                 return body.Data || {};
             })
             .catch((err: any) => {
-                let errMessage = JSON.stringify(err, null, 4);
-                console.error(`[Griddle Service] ERROR ${errMessage}`);
+                PcDiagnostics.Log(
+                    PcDiagnostics.LogType.Error,
+                    "GriddleService.apiCall",
+                    `An error occurred while trying to make a request to '${fullUrl}'.`,
+                    err
+                );
                 return Observable.throw(err);
             });
         return observable;

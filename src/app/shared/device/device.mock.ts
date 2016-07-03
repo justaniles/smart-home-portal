@@ -1,4 +1,4 @@
-import { DeviceFromServer } from "./device.interface";
+import { ServerDevice } from "./device.model";
 
 const MOCK_NAMES = [
     "Johnny",
@@ -9,10 +9,10 @@ const MOCK_NAMES = [
     "J-Drizzy"
 ];
 
-export function generateMockDevices(count: number): DeviceFromServer[] {
+export function generateMockDevices(count: number): ServerDevice[] {
     const generatedObjects = [];
 
-    let obj: DeviceFromServer;
+    let obj: ServerDevice;
     for (let i = 0; i < count; i++) {
         obj = {
             id: "" + i,

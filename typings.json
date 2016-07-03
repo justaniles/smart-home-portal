@@ -12,6 +12,7 @@
     "webpack": "registry:dt/webpack#1.12.9+20160321060707"
   },
   "devDependencies": {
+    "rxjs": "file:./node_modules/rxjs/Rx.d.ts",
     "yargs": "registry:npm/yargs#3.31.0+20160316010718"
   }
 }
