@@ -3,7 +3,7 @@ import { RequestMethod } from "@angular/http";
 import { DeviceCardComponent } from "./device-card";
 import {
     Device,
-    DevicesService,
+    DeviceService,
     GriddleService,
     GriddleConstants
 } from "../shared";
@@ -18,11 +18,14 @@ export class HomeComponent implements OnInit {
 
     devices: Device[];
 
-    constructor(private devicesService: DevicesService) {
+    constructor(private devicesService: DeviceService) {
     }
 
     ngOnInit() {
-        this.devices = this.devicesService.getDevices();
+        this.devicesService.getDevicesObservable()
+            .subscribe((devices: Device[]) => {
+                this.devices = devices;
+            });
 
         let testUrl = GriddleConstants.ApiUrls.Get.Test;
         // this.griddleService.apiCall(RequestMethod.Get, testUrl)

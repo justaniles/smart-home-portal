@@ -13,6 +13,9 @@ export class GriddleConstants {
         },
         Post: {
             Device: "device"
+        },
+        Put: {
+            ExecuteDeviceFunction: "device/exec/{device}/{func}"
         }
     };
 

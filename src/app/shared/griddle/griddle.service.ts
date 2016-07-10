@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Headers, Http, Response, RequestOptions, RequestMethod } from '@angular/http';
+import { Headers, Http, Response, RequestOptions, RequestMethod, URLSearchParams } from '@angular/http';
 import { GriddleConstants } from "./griddle.constants";
 import { Observable } from "rxjs/Observable";
 
-import PcDiagnostics = PcPortal.Diagnostics;
+import { PcDiagnostics } from "../pc-portal";
 
 @Injectable()
 export class GriddleService {
@@ -11,18 +11,24 @@ export class GriddleService {
     constructor(private http: Http) {
     }
 
-    apiCall(method: RequestMethod, urlPath: string, body?: string): Observable<any> {
+    apiCall(method: RequestMethod, urlPath: string, searchParams?: URLSearchParams, body?: any): Observable<any> {
         const options = new RequestOptions({
             method: method,
-            headers: this.getRequestHeaders(),
-            body: body
+            headers: this._getRequestHeaders(),
+            body: body,
+            search: searchParams
         });
-        const fullUrl = this.formatUrl(urlPath);
+        const fullUrl = this._getAbsoluteUrl(urlPath);
 
         const observable = this.http.request(fullUrl, options)
             .map((res: Response) => {
-                let body = res.json();
-                return body.Data || {};
+                try {
+                    let body = res.json();
+                    return body.Data || {};
+                } catch (e) {
+                    // For now assume we get here when there's no body json to parse
+                    return {};
+                }
             })
             .catch((err: any) => {
                 PcDiagnostics.Log(
@@ -33,15 +39,16 @@ export class GriddleService {
                 );
                 return Observable.throw(err);
             });
+        observable.subscribe();
         return observable;
     }
 
-    private formatUrl(urlPath: string): string {
+    private _getAbsoluteUrl(urlPath: string): string {
         const url = GriddleConstants.BaseUrl + urlPath;
         return url;
     }
 
-    private getRequestHeaders(): Headers {
+    private _getRequestHeaders(): Headers {
         const headers = new Headers({
             "sh-auth": "YxNgFJQ3SK19o0s//LD4IfNHnjlE7ZjS3hs+QWkp3AF6k9UkO+f+SM/gxFe9Ib3CiyHmZbxOlmOh3jbeBPgWPg=="
         });

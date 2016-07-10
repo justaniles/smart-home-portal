@@ -1,4 +1,4 @@
-namespace PcPortal.Utils {
+export module PcUtils {
     /**
      * Returns the value passed in if the value passed is truthy. If the value is falsey, returns the defaultValue.
      * @param value Value to check

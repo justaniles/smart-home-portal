@@ -1,5 +1,4 @@
-import PcDiagnostics = PcPortal.Diagnostics;
-import PcUtils = PcPortal.Utils;
+import { PcDiagnostics, PcUtils } from "../../pc-portal";
 
 export class DeviceFunction {
     private _name: string;
@@ -20,8 +19,8 @@ export class DeviceFunction {
             return null;
         }
 
-        const name = PcUtils.getValueOrDefault(object.name, "");
-        const argumentType = PcUtils.getValueOrDefault(object.argumentType, "");
+        const name = PcUtils.getValueOrDefault(object.Name, "");
+        const argumentType = PcUtils.getValueOrDefault(object.ArgumentType, "");
 
         return new DeviceFunction(name, argumentType);
     }

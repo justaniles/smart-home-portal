@@ -1,7 +1,5 @@
 import { DeviceDefinition, DeviceFunction } from "./device-definition";
-
-import PcDiagnostics = PcPortal.Diagnostics;
-import PcUtils = PcPortal.Utils;
+import { PcDiagnostics, PcUtils } from "../pc-portal";
 
 class BaseDevice {
     protected _description: string;
@@ -100,11 +98,11 @@ export class Device extends BaseDevice {
             return null;
         }
 
-        const id = PcUtils.getValueOrDefault(object.id, "");
-        const name = PcUtils.getValueOrDefault(object.name, "");
-        const description = PcUtils.getValueOrDefault(object.description, "");
-        const homeId = PcUtils.getValueOrDefault(object.homeId, "");
-        const deviceDefinition = DeviceDefinition.createFromObject(object.deviceDefinition);
+        const id = PcUtils.getValueOrDefault(object.Id, "");
+        const name = PcUtils.getValueOrDefault(object.Name, "");
+        const description = PcUtils.getValueOrDefault(object.Description, "");
+        const homeId = PcUtils.getValueOrDefault(object.Home, "");
+        const deviceDefinition = DeviceDefinition.createFromObject(object.Definition);
 
         return new Device(id, name, description, homeId, deviceDefinition);
     }

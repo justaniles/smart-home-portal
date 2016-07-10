@@ -5,4 +5,5 @@
 export * from "./device";
 export * from "./griddle";
 export * from "./navbar";
+export * from "./pc-portal";
 export * from "./user";

@@ -1,14 +1,12 @@
 import { DeviceFunction } from "./device-function.model";
-
-import PcDiagnostics = PcPortal.Diagnostics;
-import PcUtils = PcPortal.Utils;
+import { PcDiagnostics, PcUtils } from "../../pc-portal";
 
 export class DeviceDefinition {
     private _id: string;
     private _manufacturer: string;
     private _type: string;
     private _functions: DeviceFunction[];
-    
+
     constructor(id: string, manufacturer: string, type: string, functions: DeviceFunction[]) {
         this._id = id;
         this._manufacturer = manufacturer;
@@ -26,12 +24,12 @@ export class DeviceDefinition {
             return null;
         }
 
-        const id = PcUtils.getValueOrDefault(object.id, "");
-        const manufacturer = PcUtils.getValueOrDefault(object.manufacturer, "");
-        const type = PcUtils.getValueOrDefault(object.type, "");
+        const id = PcUtils.getValueOrDefault(object.Id, "");
+        const manufacturer = PcUtils.getValueOrDefault(object.Manufacturer, "");
+        const type = PcUtils.getValueOrDefault(object.Type, "");
         const functions: DeviceFunction[] = [];
-        
-        const rawFunctions = PcUtils.getValueOrDefault(object.functions, []);
+
+        const rawFunctions = PcUtils.getValueOrDefault(object.Functions, []);
         for (let func of rawFunctions) {
             functions.push(DeviceFunction.createFromObject(func));
         }

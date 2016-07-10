@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnInit } from "@angular/core";
 import {
-    Device
+    Device, DeviceService
 } from "../../shared";
 
 @Component({
@@ -14,20 +14,17 @@ export class DeviceCardComponent implements OnInit {
 
     dropdownHidden: boolean = true;
 
-    private primaryFunction: string;
-    private supportedFunctions: string[];
-
-    constructor() {
+    constructor(private _deviceService: DeviceService) {
     }
 
     ngOnInit() {
-        this.primaryFunction = this.deviceDetails.deviceDefinition.primaryFunction;
-        this.supportedFunctions = this.deviceDetails.deviceDefinition.supportedFunctions;
     }
 
     @HostListener("click")
     onClick() {
-        console.log(`${this.deviceDetails.name} clicked! Primary action: ${this.primaryFunction}`);
+        console.log(`${this.deviceDetails.name} clicked! Executing primary action: ${this.deviceDetails.primaryFunction.name}`);
+        this._deviceService.executeDeviceFunction(this.deviceDetails, this.deviceDetails.primaryFunction);
+        
     }
 
     toggleDropdown(event: MouseEvent) {

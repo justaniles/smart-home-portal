@@ -7,8 +7,6 @@ const _strings = {
     }
 };
 
-namespace PcPortal {
-    export class Resources {
-        static Strings = _strings;
-    }
+export module PcResources {
+    export const Strings = _strings;
 }

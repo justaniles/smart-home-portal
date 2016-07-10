@@ -1,6 +1,8 @@
-namespace PcPortal.Diagnostics {
-    const DiagnosticsStrings = PcPortal.Resources.Strings.Internal.Diagnostics;
-    
+import { PcResources } from "./pc-portal.resources";
+
+export module PcDiagnostics {
+    const DiagnosticsStrings = PcResources.Strings.Internal.Diagnostics;
+
     export enum LogType {
         Info,
         Warn,
@@ -28,14 +30,14 @@ namespace PcPortal.Diagnostics {
         }
 
         if (logType === LogType.Info) {
-            console.log.call(this, textToPrint, additionalObject);
+            console.log.call(console, textToPrint, additionalObject);
         } else if (logType === LogType.Warn) {
-            console.warn.call(this, textToPrint, additionalObject);
+            console.warn.call(console, textToPrint, additionalObject);
         } else if (logType === LogType.Error) {
-            console.error.call(this, textToPrint, additionalObject);
+            console.error.call(console, textToPrint, additionalObject);
         } else {
             console.warn(DiagnosticsStrings.InvalidLogType);
-            console.log.call(this, textToPrint, additionalObject);
+            console.log.call(console, textToPrint, additionalObject);
         }
     }
 }

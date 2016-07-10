@@ -2,8 +2,8 @@
     <button class="pc-device-card-dropdown-button btn" (click)="toggleDropdown($event)">
         <i class="fa fa-ellipsis-v"></i>
         <ul class="pc-device-card-dropdown-list pc-dropdown" [class.hidden]="dropdownHidden">
-            <li *ngFor="let func of supportedFunctions" class="pc-dropdown-item">
-                <span>{{func}}</span>
+            <li *ngFor="let func of deviceDetails.functions" class="pc-dropdown-item">
+                <span>{{func.name}}</span>
             </li>
         </ul>
     </button>

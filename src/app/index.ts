@@ -1,10 +1,9 @@
-import { DevicesService, DeviceDefinitionService, GriddleService } from "./shared";
+import { DeviceService, GriddleService } from "./shared";
 
 export * from './app.component';
 
 // Application wide providers
 export const APP_PROVIDERS = [
-    DevicesService,
-    DeviceDefinitionService,
+    DeviceService,
     GriddleService
 ];
