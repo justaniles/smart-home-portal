@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation } from "@angular/core";
-import { Routes, Router } from "@angular/router";
+import { ROUTER_DIRECTIVES } from "@angular/router";
 
-import { HomeComponent } from "./home";
-import { LoginComponent } from "./login";
 import {
+    DeviceService,
+    GriddleService,
     NavbarComponent,
     UserService
 } from "./shared";
@@ -14,34 +14,17 @@ import {
 @Component({
     selector: "app",
     providers: [
+        DeviceService,
+        GriddleService,
         UserService
     ],
-    directives: [NavbarComponent],
-    encapsulation: ViewEncapsulation.None,
-    styles: [
-        require("./app.scss")
+    directives: [
+        NavbarComponent,
+        ROUTER_DIRECTIVES
     ],
+    encapsulation: ViewEncapsulation.None,
+    styles: [require("./app.scss")],
     template: require("./app.html")
 })
-@Routes([
-    {
-        path: '/',
-        component: HomeComponent
-    },
-    {
-        path: '/home',
-        component: HomeComponent
-    },
-    {
-        path: "/login",
-        component: LoginComponent
-    }
-])
 export class AppComponent {
-
-    constructor(private router: Router) {
-    }
-
-    ngOnInit() {
-    }
 }

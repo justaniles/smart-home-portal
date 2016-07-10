@@ -1,9 +1,8 @@
 import { enableProdMode } from "@angular/core";
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { ROUTER_PROVIDERS } from "@angular/router"
+import { bootstrap } from "@angular/platform-browser-dynamic";
 
-import { DIRECTIVES, PIPES, PROVIDERS } from './platform/browser';
-import { AppComponent, APP_PROVIDERS } from './app';
+import { AppComponent, APP_ROUTER_PROVIDERS } from "./app";
+import { PROVIDERS } from "./global";
 
 /*
  * Bootstrap our Angular app with a top level component `AppComponent` and inject
@@ -16,11 +15,8 @@ export function main(): Promise<any> {
     }
 
     return bootstrap(AppComponent, [
-        ROUTER_PROVIDERS,
-        PIPES,
-        DIRECTIVES,
-        PROVIDERS,
-        APP_PROVIDERS
+        APP_ROUTER_PROVIDERS,
+        PROVIDERS
     ]).catch(err => console.error(err));
 
 }

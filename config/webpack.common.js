@@ -80,16 +80,6 @@ module.exports = {
         // remove other default values
         modulesDirectories: ['node_modules'],
 
-        alias: {
-            'angular2/core': helpers.root('node_modules/@angular/core/index.js'),
-            'angular2/testing': helpers.root('node_modules/@angular/core/testing.js'),
-            '@angular/testing': helpers.root('node_modules/@angular/core/testing.js'),
-            'angular2/platform/browser': helpers.root('node_modules/@angular/platform-browser/index.js'),
-            'angular2/router': helpers.root('node_modules/@angular/router-deprecated/index.js'),
-            'angular2/http': helpers.root('node_modules/@angular/http/index.js'),
-            'angular2/http/testing': helpers.root('node_modules/@angular/http/testing.js')
-        },
-
     },
 
     /*
