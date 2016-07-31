@@ -38,8 +38,18 @@ export class GriddleService {
                     err
                 );
                 return Observable.throw(err);
-            });
-        observable.subscribe();
+            })
+            .publish();
+
+        // Use setTimeout to connect/execute the http request AFTER the observable returns
+        // and any interested parties subscribe to it. This is to prevent a possible race
+        // condition where we call connect before returning, and the call comes back immediately
+        // or before the calling function has a chance to subscribe.
+        // TODO: determine if there's a better way to do this
+        setTimeout(() => {
+            observable.connect();
+        });
+
         return observable;
     }
 

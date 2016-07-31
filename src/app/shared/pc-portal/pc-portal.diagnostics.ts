@@ -10,7 +10,7 @@ export module PcDiagnostics {
     };
 
     /**
-     * Logs an error to the browser's console window
+     * Logs a message to the browser's console window
      * @param logType The log type of this message
      * @param context Information about from where this error is originating
      * @param message The error message
@@ -19,9 +19,11 @@ export module PcDiagnostics {
      */
     export function Log(logType: LogType, context: string, message: string, ...additionalInfo: any[]): void {
         const timestamp = new Date(Date.now());
+        const baseText = `%c[${context}] ${timestamp.toLocaleTimeString()} - ${message}`;
         const additionalText = `\n ${DiagnosticsStrings.AdditionalInfo} %O`;
+        const textFormatting = "line-height: 16px";
 
-        let textToPrint = `[${context}] ${timestamp.toString()} ${message}`;
+        let textToPrint = baseText;
         let additionalObject: any = null;
 
         if (additionalInfo) {
@@ -30,14 +32,14 @@ export module PcDiagnostics {
         }
 
         if (logType === LogType.Info) {
-            console.log.call(console, textToPrint, additionalObject);
+            console.log.call(console, textToPrint, textFormatting, additionalObject);
         } else if (logType === LogType.Warn) {
-            console.warn.call(console, textToPrint, additionalObject);
+            console.warn.call(console, textToPrint, textFormatting, additionalObject);
         } else if (logType === LogType.Error) {
-            console.error.call(console, textToPrint, additionalObject);
+            console.error.call(console, textToPrint, textFormatting, additionalObject);
         } else {
-            console.warn(DiagnosticsStrings.InvalidLogType);
-            console.log.call(console, textToPrint, additionalObject);
+            console.warn(DiagnosticsStrings.InvalidLogType.format(logType));
+            console.log.call(console, textToPrint, textFormatting, additionalObject);
         }
     }
 }

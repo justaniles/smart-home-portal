@@ -15,8 +15,7 @@ import {
     selector: "app",
     providers: [
         DeviceService,
-        GriddleService,
-        UserService
+        GriddleService
     ],
     directives: [
         NavbarComponent,

@@ -28,6 +28,18 @@
  * see https://github.com/typings/registry
  *
  */
+declare module "local-storage" {
+    class ls {
+        constructor(key: string, value?: any);
+        static get(key: string): any;
+        static set(key: string, value: any): boolean;
+        static remove(key: string): void;
+        static clear(): void;
+        static on(key: string, fn: (newValue: any, oldValue: any, url: string) => void);
+        static off(key: string, fn: (newValue: any, oldValue: any, url: string) => void);
+    }
+    export = ls;
+}
 
 // Extend string prototype
 interface String {

@@ -1,7 +1,7 @@
-import { FORM_DIRECTIVES } from '@angular/common';
+import { FORM_DIRECTIVES } from '@angular/forms';
 import { ViewEncapsulation, Component } from '@angular/core';
 
-import { UserService } from "../shared/index";
+import { AuthService } from "../shared/index";
 
 @Component({
     selector: '.pc-login',
@@ -11,23 +11,20 @@ import { UserService } from "../shared/index";
     encapsulation: ViewEncapsulation.None
 })
 /**
- * This class represents the lazy loaded LoginComponent.
+ * This class represents the lazy loaded SignupComponent.
  */
 export class LoginComponent {
 
     email: string;
     password: string;
 
-    /**
-     * Creates an instance of the LoginComponent with the injected
-     * UserService.
-     *
-     * @param {UserService} userService the injected UserService
-     */
-    constructor(public userService: UserService) {
+    constructor(public _authService: AuthService) {
     }
 
     login() {
-        this.userService.loginUser(this.email, this.password);
+        this._authService.login(this.email, this.password)
+            .then(() => {
+                console.log("Login successful!");
+            });
     }
 }

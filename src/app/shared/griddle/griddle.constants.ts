@@ -3,22 +3,42 @@
  */
 export { RequestMethod } from "@angular/http";
 
-export class GriddleConstants {
+export module GriddleConstants {
 
-    public static ApiUrls = {
+    export const ApiUrls = {
         Get: {
             Test: "test",
             Device: "device/{home}",
             DeviceDefinitions: "device/definitions"
         },
         Post: {
-            Device: "device"
+            CreateUser: "auth/create",
+            Device: "device",
+            LoginUser: "auth/login"
         },
         Put: {
             ExecuteDeviceFunction: "device/exec/{device}/{func}"
         }
     };
 
-    public static BaseUrl = "http://hh-svcfe.azurewebsites.net/";
+    export const BaseUrl = "http://hh-svcfe.azurewebsites.net/";
 
+    export module ResponseObjects {
+        export interface LoginUserResponse {
+            /**
+             * The authentication token for the user.
+             */
+            Token: string;
+
+            /**
+             * The expiration date for the authentication token.
+             */
+            Expiration: string;
+
+            /**
+             * The list of claims for the user.
+             */
+            Claims: string[];
+        }
+    }
 }
