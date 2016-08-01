@@ -2,10 +2,7 @@ import { Component, ViewEncapsulation } from "@angular/core";
 import { ROUTER_DIRECTIVES } from "@angular/router";
 
 import {
-    DeviceService,
-    GriddleService,
     NavbarComponent,
-    UserService
 } from "./shared";
 
 /*
@@ -13,10 +10,6 @@ import {
  */
 @Component({
     selector: "app",
-    providers: [
-        DeviceService,
-        GriddleService
-    ],
     directives: [
         NavbarComponent,
         ROUTER_DIRECTIVES

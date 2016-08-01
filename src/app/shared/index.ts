@@ -1,4 +1,5 @@
 import { AUTH_PROVIDERS } from "./auth";
+import { DeviceService } from "./device";
 import { GriddleService } from "./griddle";
 import { UserService } from "./user";
 
@@ -15,6 +16,7 @@ export * from "./user";
 
 export const SHARED_PROVIDERS = [
     ...AUTH_PROVIDERS,
+    DeviceService,
     GriddleService,
     UserService
 ];

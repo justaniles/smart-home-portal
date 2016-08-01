@@ -1,7 +1,7 @@
 import { FORM_DIRECTIVES } from '@angular/forms';
 import { ViewEncapsulation, Component } from '@angular/core';
 
-import { AuthService } from "../shared/index";
+import { AuthService, GriddleConstants, UserService } from "../shared";
 
 @Component({
     selector: '.pc-login',
@@ -10,20 +10,20 @@ import { AuthService } from "../shared/index";
     directives: [FORM_DIRECTIVES],
     encapsulation: ViewEncapsulation.None
 })
-/**
- * This class represents the lazy loaded SignupComponent.
- */
 export class LoginComponent {
 
     email: string;
     password: string;
 
-    constructor(public _authService: AuthService) {
+    constructor(private authService: AuthService, private userService: UserService) {
+        this.authService.clearAuthToken();
     }
 
     login() {
-        this._authService.login(this.email, this.password)
-            .then(() => {
+        this.userService.loginUser(this.email, this.password)
+            .subscribe((authInformation: GriddleConstants.ResponseObjects.LoginUserResponse) => {
+                const token = authInformation.Token;
+                this.authService.storeAuthToken(this.email, token);
                 console.log("Login successful!");
             });
     }

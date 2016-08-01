@@ -4,8 +4,8 @@ import { PcDiagnostics } from "../pc-portal";
 const AUTH_TOKEN_KEY = "pancake-auth-token";
 
 interface StoredAuthToken {
+    email: string;
     token: string;
-    expiration: string;
 }
 
 export class AuthStorage {
@@ -14,10 +14,10 @@ export class AuthStorage {
         this._storeAuthToken(null);
     }
 
-    static storeAuthToken(token: string, expiration: Date): void {
+    static storeAuthToken(email: string, token: string): void {
         const authTokenToStore: StoredAuthToken = {
-            token: token,
-            expiration: expiration.toISOString()
+            email: email,
+            token: token
         };
         this._storeAuthToken(authTokenToStore);
     }
@@ -28,18 +28,10 @@ export class AuthStorage {
             return null;
         }
 
-        // Check expiration
-        const currentDate = new Date(Date.now());
-        const storedDate = new Date(storedAuthToken.expiration);
-        if (currentDate.getTime() > storedDate.getTime()) {
-            this.clearAuthToken();
-            return null;
-        }
-
         return storedAuthToken.token;
     }
 
-    private static _storeAuthToken(value: any) {
+    private static _storeAuthToken(value: StoredAuthToken) {
         const success = localStorage.set(AUTH_TOKEN_KEY, value);
         if (!success) {
             PcDiagnostics.Log(

@@ -4,7 +4,6 @@ import { DeviceCardComponent } from "./device-card";
 import {
     Device,
     DeviceService,
-    GriddleService,
     GriddleConstants
 } from "../shared";
 

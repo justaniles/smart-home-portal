@@ -31,14 +31,13 @@ export module GriddleConstants {
             Token: string;
 
             /**
-             * The expiration date for the authentication token.
-             */
-            Expiration: string;
-
-            /**
              * The list of claims for the user.
              */
             Claims: string[];
         }
     }
+
+    export const ResponseStatus = {
+        Unauthorized: 401
+    };
 }

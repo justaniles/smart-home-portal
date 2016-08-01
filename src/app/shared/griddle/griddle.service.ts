@@ -1,14 +1,16 @@
 import { Injectable } from "@angular/core";
 import { Headers, Http, Response, RequestOptions, RequestMethod, URLSearchParams } from '@angular/http';
-import { GriddleConstants } from "./griddle.constants";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 
+import { AuthService } from "../auth";
+import { GriddleConstants } from "./griddle.constants";
 import { PcDiagnostics } from "../pc-portal";
 
 @Injectable()
 export class GriddleService {
 
-    constructor(private http: Http) {
+    constructor(private authService: AuthService, private http: Http, private router: Router) {
     }
 
     apiCall(method: RequestMethod, urlPath: string, searchParams?: URLSearchParams, body?: any): Observable<any> {
@@ -30,14 +32,19 @@ export class GriddleService {
                     return {};
                 }
             })
-            .catch((err: any) => {
-                PcDiagnostics.Log(
-                    PcDiagnostics.LogType.Error,
-                    "GriddleService.apiCall",
-                    `An error occurred while trying to make a request to '${fullUrl}'.`,
-                    err
-                );
-                return Observable.throw(err);
+            .catch((err: Response) => {
+                if (err.status === GriddleConstants.ResponseStatus.Unauthorized) {
+                    this.router.navigate(["/login"]);
+                }
+                else {
+                    PcDiagnostics.Log(
+                        PcDiagnostics.LogType.Error,
+                        "GriddleService.apiCall",
+                        `An error occurred while trying to make a request to '${fullUrl}'.`,
+                        err
+                    );
+                }
+                return Observable.empty();
             })
             .publish();
 
@@ -59,8 +66,9 @@ export class GriddleService {
     }
 
     private _getRequestHeaders(): Headers {
+        const currentAuthToken = this.authService.authToken;
         const headers = new Headers({
-            "sh-auth": "YxNgFJQ3SK19o0s//LD4IfNHnjlE7ZjS3hs+QWkp3AF6k9UkO+f+SM/gxFe9Ib3CiyHmZbxOlmOh3jbeBPgWPg=="
+            "sh-auth": currentAuthToken
         });
         return headers;
     }

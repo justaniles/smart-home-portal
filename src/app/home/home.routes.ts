@@ -6,7 +6,7 @@ export const HomeRoutes: RouterConfig = [
     {
         path: "",
         component: HomeComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: "home",
