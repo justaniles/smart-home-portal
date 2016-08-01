@@ -66,7 +66,7 @@ export class GriddleService {
     }
 
     private _getRequestHeaders(): Headers {
-        const currentAuthToken = this.authService.authToken;
+        const currentAuthToken = this.authService.authInfo.token;
         const headers = new Headers({
             "sh-auth": currentAuthToken
         });
