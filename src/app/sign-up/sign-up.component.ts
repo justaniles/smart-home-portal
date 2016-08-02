@@ -5,8 +5,7 @@ import {
     GriddleConstants,
     GriddleService,
     PcDiagnostics,
-    RequestMethod,
-    UserService
+    RequestMethod
 } from "../shared";
 
 @Component({
@@ -30,7 +29,7 @@ export class SignupComponent {
      *
      * @param {UserService} userService the injected UserService
      */
-    constructor(public userService: UserService, private _griddleService: GriddleService) {
+    constructor(private _griddleService: GriddleService) {
     }
 
     submit() {
