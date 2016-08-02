@@ -19,17 +19,30 @@ export class AuthService {
     }
 
     /**
-     * Gets the auth information currently stored in local storage.
-     * @returns {StoredAuthToken} Object containing the user's email and auth token, or null if
-     *      no auth information is found.
+     * Gets the auth token currently saved in local storage.
+     * @returns The current user's stored auth token, or null if no auth information is found.
      */
-    get authInfo(): StoredAuthToken {
+    get authToken(): string {
         let storedAuthToken: StoredAuthToken = localStorage.get(AUTH_TOKEN_KEY);
         if (!storedAuthToken) {
             return null;
         }
 
-        return storedAuthToken;
+        return storedAuthToken.token;
+    }
+
+
+    /**
+     * Gets the email associated with the auth token currently saved in local storage.
+     * @returns The current user's email, or null if no auth information is found.
+     */
+    get authEmail(): string {
+        let storedAuthToken: StoredAuthToken = localStorage.get(AUTH_TOKEN_KEY);
+        if (!storedAuthToken) {
+            return null;
+        }
+
+        return storedAuthToken.email;
     }
 
     /**

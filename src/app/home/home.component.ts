@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { RequestMethod } from "@angular/http";
 import { DeviceCardComponent } from "./device-card";
 import {
     Device,
-    DeviceService,
-    GriddleConstants
+    DeviceService
 } from "../shared";
 
 @Component({
@@ -26,14 +24,5 @@ export class HomeComponent implements OnInit {
                 this.devices = devices;
             });
 
-        let testUrl = GriddleConstants.ApiUrls.Get.Test;
-        // this.griddleService.apiCall(RequestMethod.Get, testUrl)
-        //     .subscribe(
-        //         (responseData) => {
-        //             console.log(`GRIDDLE RESPONSE: ${responseData}`);
-        //         }, (error) => {
-        //             console.error(`GRIDDLE ERROR: ${error}`);
-        //         });
-        console.log(this.devices);
     }
 }

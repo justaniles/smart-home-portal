@@ -28,9 +28,9 @@
  * see https://github.com/typings/registry
  *
  */
+declare function ls(key: string, value?: any): void;
 declare module "local-storage" {
     class ls {
-        constructor(key: string, value?: any);
         static get(key: string): any;
         static set(key: string, value: any): boolean;
         static remove(key: string): void;
