@@ -7,11 +7,13 @@ export module GriddleConstants {
 
     export const ApiUrls = {
         Get: {
-            Test: "test",
             Device: "device/{home}",
-            DeviceDefinitions: "device/definitions"
+            DeviceDefinitions: "device/definitions",
+            Homes: "homes",
+            Test: "test"
         },
         Post: {
+            CreateHome: "homes",
             CreateUser: "auth/create",
             Device: "device",
             LoginUser: "auth/login"

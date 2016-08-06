@@ -11,3 +11,13 @@ html, body {
     height: 100%;
     padding: $nav-height + $pd-normal $pd-normal $pd-normal;
 }
+
+.pc-form {
+    width: $form-width;
+
+    & > input {
+        height: 3rem;
+        width: 100%;
+        margin-bottom: $pd-normal;
+    }
+}

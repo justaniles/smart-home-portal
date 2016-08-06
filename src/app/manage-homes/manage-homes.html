@@ -1,0 +1,15 @@
+<div>
+    <div *ngIf="loading || homes.length > 0" class="pc-homes-list">
+        <h2>Your homes</h2>
+        <ul>
+            <li class="pc-home" *ngFor="let home of homes">
+                <span>{{home.name}}</span>
+                <span>Created on: {{home.dateCreated | date}}</span>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="homes.length === 0 && !loading" class="pc-no-homes">
+        <h2>It looks like you don't have any homes :(</h2>
+        <a [routerLink]="['/homes/create']">Create one now!</a>
+    </div>
+</div>

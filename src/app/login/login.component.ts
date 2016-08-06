@@ -1,7 +1,7 @@
 import { FORM_DIRECTIVES } from '@angular/forms';
 import { ViewEncapsulation, Component } from '@angular/core';
 
-import { AuthService, UserService } from "../shared";
+import { AuthService } from "../shared";
 import { GriddleConstants, GriddleService, RequestMethod } from "../shared/griddle";
 
 import GriddleResponses = GriddleConstants.ResponseObjects;
@@ -18,7 +18,7 @@ export class LoginComponent {
     email: string;
     password: string;
 
-    constructor(private authService: AuthService, private griddleService: GriddleService, private userService: UserService) {
+    constructor(private authService: AuthService, private griddleService: GriddleService) {
         this.authService.clearAuthToken();
     }
 

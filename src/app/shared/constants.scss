@@ -12,6 +12,12 @@ $pc-white: rgb(255, 255, 255);
 // ----------
 $nav-height: 5rem;
 
+
+// ----------
+// Forms
+// ----------
+$form-width: 28rem;
+
 // ----------
 // Padding
 // ----------
@@ -26,11 +32,15 @@ $border-radius-sm: 0.2rem;
 // -----------
 // Breakpoints
 // -----------
+$screen-sm: 34rem;
+$screen-md: 48rem;
+$screen-lg: 62rem;
+$screen-xl: 75rem;
 $screen-breakpoints: (
-    sm: 34em,
-    md: 48em,
-    lg: 62em,
-    xl: 75em
+    sm: $screen-sm,
+    md: $screen-md,
+    lg: $screen-lg,
+    xl: $screen-xl
 );
 // Wrap content with appropriate media breakpoint:
 @mixin media-breakpoint-up($name) {

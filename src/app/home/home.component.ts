@@ -13,16 +13,18 @@ import {
 })
 export class HomeComponent implements OnInit {
 
+    loading: boolean;
     devices: Device[];
 
     constructor(private devicesService: DeviceService) {
     }
 
     ngOnInit() {
+        this.loading = true;
         this.devicesService.getDevicesObservable()
             .subscribe((devices: Device[]) => {
                 this.devices = devices;
+                this.loading = false;
             });
-
     }
 }
