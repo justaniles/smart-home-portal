@@ -83,9 +83,9 @@ export class Device extends BaseDevice {
     }
 
     /**
-     * Attempts to create a device from the provided Javascript object, using default
+     * Attempts to create-home a device from the provided Javascript object, using default
      * values where possible.
-     * @param object Object to parse and create a device from
+     * @param object Object to parse and create-home a device from
      * @returns {Device} A new Device
      */
     static createFromObject(object: any): Device {
@@ -93,7 +93,7 @@ export class Device extends BaseDevice {
             PcDiagnostics.Log(
                 PcDiagnostics.LogType.Error,
                 "Device.createFromObject",
-                "Cannot create a Device from an empty server object."
+                "Cannot create-home a Device from an empty server object."
             );
             return null;
         }

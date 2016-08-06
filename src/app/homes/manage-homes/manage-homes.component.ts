@@ -2,12 +2,12 @@ import { ViewEncapsulation, Component, OnInit } from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/forms';
 import { ROUTER_DIRECTIVES } from "@angular/router";
 
-import { Home } from "./home.model";
+import { Home } from "../home.model";
 import {
     GriddleConstants,
     GriddleService,
     RequestMethod
-} from "../shared";
+} from "../../shared/griddle";
 
 @Component({
     selector: '.pc-manage-homes',

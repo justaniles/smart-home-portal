@@ -1,13 +1,13 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 import { HomeRoutes } from "./home";
 import { LoginRoutes } from "./login";
-import { ManageHomesRoutes } from "./manage-homes";
+import { HomesRoutes } from "./homes";
 import { SignupRoutes } from "./sign-up";
 
 export const routes: RouterConfig = [
     ...HomeRoutes,
+    ...HomesRoutes,
     ...LoginRoutes,
-    ...ManageHomesRoutes,
     ...SignupRoutes
 ];
 

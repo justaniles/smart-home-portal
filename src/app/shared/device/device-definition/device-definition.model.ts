@@ -19,7 +19,7 @@ export class DeviceDefinition {
             PcDiagnostics.Log(
                 PcDiagnostics.LogType.Error,
                 "DeviceDefinition.createFromObject",
-                "Cannot create a DeviceDefinition from an empty object."
+                "Cannot create-home a DeviceDefinition from an empty object."
             );
             return null;
         }
