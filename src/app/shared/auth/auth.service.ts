@@ -1,8 +1,7 @@
-import localStorage = require("local-storage");
 import { Injectable } from "@angular/core";
-import { PcDiagnostics } from "../pc-portal";
+import { PcLocalStorage } from "../pc-portal";
 
-const AUTH_TOKEN_KEY = "pancake-auth-token";
+const AUTH_TOKEN_KEY = "pc-auth-token";
 
 /**
  * User's auth token that is saved in local storage.
@@ -23,7 +22,7 @@ export class AuthService {
      * @returns The current user's stored auth token, or null if no auth information is found.
      */
     get authToken(): string {
-        let storedAuthToken: StoredAuthToken = localStorage.get(AUTH_TOKEN_KEY);
+        let storedAuthToken: StoredAuthToken = PcLocalStorage.get(AUTH_TOKEN_KEY);
         if (!storedAuthToken) {
             return null;
         }
@@ -37,7 +36,7 @@ export class AuthService {
      * @returns The current user's email, or null if no auth information is found.
      */
     get authEmail(): string {
-        let storedAuthToken: StoredAuthToken = localStorage.get(AUTH_TOKEN_KEY);
+        let storedAuthToken: StoredAuthToken = PcLocalStorage.get(AUTH_TOKEN_KEY);
         if (!storedAuthToken) {
             return null;
         }
@@ -56,7 +55,7 @@ export class AuthService {
             email: email,
             token: token
         };
-        this._storeAuthToken(authTokenToStore);
+        PcLocalStorage.set(AUTH_TOKEN_KEY, authTokenToStore);
     }
 
     /**
@@ -64,17 +63,6 @@ export class AuthService {
      * with null.
      */
     clearAuthToken(): void {
-        this._storeAuthToken(null);
-    }
-
-    private _storeAuthToken(value: StoredAuthToken) {
-        const success = localStorage.set(AUTH_TOKEN_KEY, value);
-        if (!success) {
-            PcDiagnostics.Log(
-                PcDiagnostics.LogType.Error,
-                "AuthStorage.setLocalStorage",
-                "Unable to set a value in local storage. This could possibly be due to a QuotaExceededError being thrown."
-            );
-        }
+        PcLocalStorage.set(AUTH_TOKEN_KEY, null);
     }
 }
