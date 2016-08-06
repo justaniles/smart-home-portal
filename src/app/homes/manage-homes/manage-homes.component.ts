@@ -3,6 +3,7 @@ import { FORM_DIRECTIVES } from '@angular/forms';
 import { ROUTER_DIRECTIVES } from "@angular/router";
 
 import { Home } from "../home.model";
+import { HomeService } from "../home.service";
 import {
     GriddleConstants,
     GriddleService,
@@ -21,7 +22,7 @@ export class ManageHomesComponent implements OnInit {
     homes: Home[] = [];
     loading = true;
 
-    constructor(private griddleService: GriddleService) {
+    constructor(private griddleService: GriddleService, private homeService: HomeService) {
     }
 
     ngOnInit() {
@@ -35,5 +36,9 @@ export class ManageHomesComponent implements OnInit {
 
                 this.loading = false;
             });
+    }
+
+    selectHome(home: Home) {
+        this.homeService.currentHome = home;
     }
 }

@@ -1,22 +1,13 @@
-.pc-signup {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import "../../shared/constants";
+
+.pc-homes-list {
+
 }
 
-.pc-signup-form {
-    position: relative;
-    top: -10%;
-    display: block;
+.pc-home-item {
+    cursor: pointer;
 
-    width: 28em;
-
-    & > * {
-        height: 3em;
-        width: 100%;
-
-        margin-bottom: 2em;
+    &:hover {
+        background-color: $pc-gray-light;
     }
 }
