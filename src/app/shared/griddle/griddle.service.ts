@@ -24,13 +24,11 @@ export class GriddleService {
 
         const observable = this.http.request(fullUrl, options)
             .map((res: Response) => {
-                try {
-                    let body = res.json();
-                    return body.Data || {};
-                } catch (e) {
-                    // For now assume we get here when there's no body json to parse
+                if (res.status === 204) {
                     return {};
                 }
+                const body = res.json();
+                return body.Data || {};
             })
             .catch((err: Response) => {
                 if (err.status === GriddleConstants.ResponseStatus.Unauthorized) {
