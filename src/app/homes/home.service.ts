@@ -19,7 +19,7 @@ export class HomeService {
 
     get currentHome(): Home {
         const obj = PcLocalStorage.get(CURRENT_HOME_KEY);
-        return Home.fromObject(obj);
+        return obj ? Home.fromObject(obj) : null;
     }
 
 }

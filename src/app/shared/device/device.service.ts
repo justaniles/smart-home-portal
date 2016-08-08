@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Device } from "./device.model";
 import {
     GriddleConstants,
     GriddleService,
     RequestMethod
 } from "../griddle";
+import { HomeService } from "../../homes";
 import { BehaviorSubject, Observable } from "rxjs";
 import { DeviceFunction } from "./device-definition/device-function.model";
 
@@ -12,7 +14,7 @@ import { DeviceFunction } from "./device-definition/device-function.model";
 export class DeviceService {
     private _loadedDevices: BehaviorSubject<Device[]>;
 
-    constructor(private _griddleService: GriddleService) {
+    constructor(private griddleService: GriddleService, private homeService: HomeService, private router: Router) {
         this._loadedDevices = new BehaviorSubject([]);
 
         this.reloadDevices();
@@ -31,7 +33,7 @@ export class DeviceService {
             };
         }
 
-        this._griddleService.apiCall(RequestMethod.Put, executeDeviceFunctionUrl, null, requestBody);
+        this.griddleService.apiCall(RequestMethod.Put, executeDeviceFunctionUrl, null, requestBody);
     }
 
     /**
@@ -40,10 +42,15 @@ export class DeviceService {
      * new list of devices is loaded.
      */
     reloadDevices() {
+        const currentHome = this.homeService.currentHome;
+        if (!currentHome) {
+            this.router.navigate(["/homes"]);
+            return;
+        }
         const getDevicesUrl = GriddleConstants.ApiUrls.Get.Device.format({
-            home: "b0f528ae-b297-4c62-a764-ec441d760562"
+            home: currentHome.id
         });
-        this._griddleService.apiCall(RequestMethod.Get, getDevicesUrl)
+        this.griddleService.apiCall(RequestMethod.Get, getDevicesUrl)
             .map((rawResponseArray) => {
                 if (!rawResponseArray) {
                     return [];
