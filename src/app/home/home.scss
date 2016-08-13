@@ -1,5 +1,12 @@
 @import "../shared/constants";
 
+:host {
+    display: block;
+    height: 100%;
+    background-color: rgb(230, 230, 231);
+    padding: $pd-small + $nav-height $pd-large $pd-large;
+}
+
 .pc-card-wrapper {
     width: 100%;
 
@@ -8,12 +15,7 @@
 }
 
 .pc-card-wrapper-inner {
-    margin: 0 -$pd-small;
-    max-width: map_get($screen-breakpoints, lg);
-
-    @include media-breakpoint-up(lg) {
-        margin: 0 -$pd-medium;
-    }
+    max-width: $screen-lg;
 }
 
 .pc-card-container {
