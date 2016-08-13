@@ -19,6 +19,7 @@ export module GriddleConstants {
             LoginUser: "auth/login"
         },
         Put: {
+            AddLifxAccount: "account/lifx/{home}",
             ExecuteDeviceFunction: "device/exec/{device}/{func}"
         }
     };
@@ -40,6 +41,9 @@ export module GriddleConstants {
     }
 
     export const ResponseStatus = {
-        Unauthorized: 401
+        Success: 200,
+        NoContent: 204,
+        Unauthorized: 401,
+        Forbidden: 403
     };
 }

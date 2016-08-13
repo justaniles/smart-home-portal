@@ -1,0 +1,12 @@
+<div>
+    <h1>Add you LIFX account</h1>
+    <h4>You're gonna need to <a href="https://cloud.lifx.com/settings" target="_blank">go get your AppKey</a>.</h4>
+    <form class="pc-form" (ngSubmit)="submit()">
+        <input name="appKey"
+               placeholder="App key"
+               type="text"
+               [(ngModel)]="appKey"
+               class="form-control" />
+        <button type="submit" class="btn btn-outline-primary">Add account</button>
+    </form>
+</div>
