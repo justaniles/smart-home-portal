@@ -1,9 +1,14 @@
-<div class="pc-card-wrapper">
-    <div class="pc-card-wrapper-inner row">
+<div class="pc-card-wrapper row" *ngIf="userHasHomes">
 
-        <div *ngFor="let device of devices" class="pc-card-container col-xs-6 col-md-4 col-lg-3">
-            <device-card [deviceDetails]="device"></device-card>
-        </div>
+    <div class="pc-card-container col-xs-6 col-md-4 col-lg-3" *ngFor="let device of devices" >
+        <device-card [deviceDetails]="device"></device-card>
+    </div>
 
+</div>
+
+<div class="pc-no-homes" *ngIf="!userHasHomes">
+    <div>
+        <h2>You don't have a home selected</h2>
+        <p><a [routerLink]="['/homes']">Click here</a> to manage your homes.</p>
     </div>
 </div>

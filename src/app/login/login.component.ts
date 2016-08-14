@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/forms';
 import { ROUTER_DIRECTIVES } from "@angular/router";
 
-import { AuthService } from "../shared";
+import { HomeService } from "../homes";
+import { AuthService } from "../shared/auth";
 import { GriddleConstants, GriddleService, RequestMethod } from "../shared/griddle";
 
 import GriddleResponses = GriddleConstants.ResponseObjects;
@@ -18,7 +19,7 @@ export class LoginComponent {
     email: string;
     password: string;
 
-    constructor(private authService: AuthService, private griddleService: GriddleService) {
+    constructor(private authService: AuthService, private griddleService: GriddleService, private homeService: HomeService) {
         this.authService.clearAuthToken();
     }
 
@@ -34,8 +35,10 @@ export class LoginComponent {
                 return <GriddleResponses.LoginUserResponse>responseObject;
             })
             .subscribe((authInformation) => {
+                // Successful login
                 const token = authInformation.Token;
                 this.authService.storeAuthToken(this.email, token);
+                this.homeService.clearCurrentHome();
                 console.log("Login successful!");
             });
     }

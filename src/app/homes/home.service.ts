@@ -9,12 +9,11 @@ const CURRENT_HOME_KEY = "pc-current-home-view";
 export class HomeService {
 
     set currentHome(home: Home) {
-        const convertedObject = {
-            id: home.id,
-            name: home.name,
-            dateCreated: home.dateCreated
-        };
-        PcLocalStorage.set(CURRENT_HOME_KEY, convertedObject);
+        if (home) {
+            PcLocalStorage.set(CURRENT_HOME_KEY, home.toJSON());
+        } else {
+            PcLocalStorage.set(CURRENT_HOME_KEY, null);
+        }
     }
 
     get currentHome(): Home {
@@ -22,4 +21,7 @@ export class HomeService {
         return obj ? Home.fromObject(obj) : null;
     }
 
+    clearCurrentHome(): void {
+        this.currentHome = null;
+    }
 }
