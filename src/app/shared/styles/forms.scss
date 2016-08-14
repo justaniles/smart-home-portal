@@ -1,13 +1,34 @@
 @import "./constants";
+@import "./buttons";
 
 .pc-form {
+    & > .pc-form-header {
+        margin-bottom: $pd-medium;
+    }
+
     & > input {
         height: 3rem;
         width: 100%;
         margin-bottom: $pd-normal;
     }
 
-    & > button[type=submit] {
+    & > button {
         float: right;
+
+        & + button {
+            margin-right: 2rem;
+        }
     }
+
+    & > button[type=submit] {
+        @extend .pc-btn-outline-primary;
+    }
+
+    & > button[type=reset] {
+        @extend .pc-btn-plain-secondary;
+    }
+}
+
+.pc-form-header {
+    margin-bottom: $pd-medium;
 }

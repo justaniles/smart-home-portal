@@ -1,28 +1,32 @@
-<form class="pc-signup-form" (ngSubmit)="submit()">
-    <input name="firstName"
-           placeholder="First name"
-           type="text"
-           [(ngModel)]="firstName"
-           class="form-control" />
-    <input name="lastName"
-           placeholder="Last name"
-           type="text"
-           [(ngModel)]="lastName"
-           class="form-control" />
-    <input name="email"
-           placeholder="Email"
-           type="email"
-           [(ngModel)]="email"
-           class="form-control" />
-    <input name="password"
-           placeholder="Password"
-           type="password"
-           [(ngModel)]="password"
-           class="form-control" />
-    <input name="confirmPassword"
-           placeholder="Confirm password"
-           type="password"
-           [(ngModel)]="confirmPassword"
-           class="form-control" />
-    <button type="submit" class="btn btn-outline-primary">Login</button>
-</form>
+<div class="pc-signup-container">
+    <h2 class="pc-form-header">Create a new account</h2>
+    <form class="pc-form" (ngSubmit)="submit()">
+        <input name="firstName"
+               placeholder="First name"
+               type="text"
+               [(ngModel)]="firstName"
+               class="form-control" />
+        <input name="lastName"
+               placeholder="Last name"
+               type="text"
+               [(ngModel)]="lastName"
+               class="form-control" />
+        <input name="email"
+               placeholder="Email"
+               type="email"
+               [(ngModel)]="email"
+               class="form-control" />
+        <input name="password"
+               placeholder="Password"
+               type="password"
+               [(ngModel)]="password"
+               class="form-control" />
+        <input name="confirmPassword"
+               placeholder="Confirm password"
+               type="password"
+               [(ngModel)]="confirmPassword"
+               class="form-control" />
+        <button type="submit" class="btn btn-outline-primary">Create</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</div>

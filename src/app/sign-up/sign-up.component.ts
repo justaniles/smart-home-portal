@@ -1,5 +1,5 @@
 import { FORM_DIRECTIVES } from '@angular/forms';
-import { ViewEncapsulation, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
     GriddleConstants,
@@ -9,11 +9,10 @@ import {
 } from "../shared";
 
 @Component({
-    selector: '.pc-signup',
+    selector: 'pc-signup',
     template: require('./sign-up.html'),
     styles: [require('./sign-up.scss')],
-    directives: [FORM_DIRECTIVES],
-    encapsulation: ViewEncapsulation.None
+    directives: [FORM_DIRECTIVES]
 })
 export class SignupComponent {
 

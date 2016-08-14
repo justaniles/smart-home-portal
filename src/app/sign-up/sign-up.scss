@@ -1,4 +1,7 @@
-.pc-signup {
+@import "../shared/styles/constants";
+@import "../shared/styles/forms";
+
+:host {
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,17 +9,9 @@
     align-items: center;
 }
 
-.pc-signup-form {
+.pc-signup-container {
     position: relative;
-    top: -10%;
-    display: block;
+    top: -5%;
 
-    width: 28em;
-
-    & > * {
-        height: 3em;
-        width: 100%;
-
-        margin-bottom: 2em;
-    }
+    width: $form-width;
 }

@@ -1,0 +1,26 @@
+@import "./constants";
+
+.pc-btn-outline-primary {
+    background-color: transparent;
+    border: 1px solid $pc-color-primary;
+    color: $pc-color-primary;
+    transition: 0.1s;
+
+    &:hover {
+        background-color: $pc-color-primary;
+        color: white;
+    }
+}
+
+.pc-btn-plain-secondary {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: $pc-color-secondary;
+    transition: 0.1s;
+
+    &:hover {
+        $secondary-lightened: lighten($pc-color-secondary, 50%);
+        background-color: $secondary-lightened;
+        border: 1px solid $secondary-lightened;
+    }
+}
