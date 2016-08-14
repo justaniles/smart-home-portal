@@ -1,5 +1,5 @@
+import { Component } from "@angular/core";
 import { FORM_DIRECTIVES } from "@angular/forms";
-import { ViewEncapsulation, Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 import {
@@ -12,8 +12,7 @@ import {
     selector: 'create-home',
     template: require('./create-home.html'),
     styles: [require('./create-home.scss')],
-    directives: [FORM_DIRECTIVES],
-    encapsulation: ViewEncapsulation.None
+    directives: [FORM_DIRECTIVES]
 })
 export class CreateHomeComponent {
 

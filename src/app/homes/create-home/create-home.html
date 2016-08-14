@@ -1,8 +1,11 @@
-<form class="pc-form" (ngSubmit)="submit()">
-    <input name="homeName"
-           placeholder="Home name"
-           type="text"
-           [(ngModel)]="homeName"
-           class="form-control" />
-    <button type="submit" class="btn btn-outline-primary">Create</button>
-</form>
+<div class="pc-create-home-container">
+    <h2 class="pc-form-header">Add a new home</h2>
+    <form class="pc-form" (ngSubmit)="submit()">
+        <input name="homeName"
+               placeholder="Home name"
+               type="text"
+               [(ngModel)]="homeName"
+               class="form-control" />
+        <button type="submit" class="btn">Create</button>
+    </form>
+</div>

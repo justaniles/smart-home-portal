@@ -4,11 +4,7 @@ import { ROUTER_DIRECTIVES } from "@angular/router";
 
 import { Home } from "../home.model";
 import { HomeService } from "../home.service";
-import {
-    GriddleConstants,
-    GriddleService,
-    RequestMethod
-} from "../../shared/griddle";
+import { GriddleConstants, GriddleService, RequestMethod } from "../../shared/griddle";
 
 @Component({
     selector: '.pc-manage-homes',
