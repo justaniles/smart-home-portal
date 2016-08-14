@@ -1,5 +1,9 @@
 @import "../../shared/constants";
 
+:host {
+    padding: $nav-height + $pd-small $pd-large $pd-large
+}
+
 .pc-homes-list {
 
 }

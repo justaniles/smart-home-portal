@@ -14,7 +14,7 @@ export module GriddleConstants {
         },
         Post: {
             CreateHome: "homes",
-            CreateUser: "auth/create-home",
+            CreateUser: "auth/create",
             Device: "device",
             LoginUser: "auth/login"
         },

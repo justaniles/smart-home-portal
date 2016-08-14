@@ -37,7 +37,7 @@ export class DeviceService {
     }
 
     /**
-     * Reload the list of devices for the current home from the server.
+     * Reload the list of devices for the current home-view from the server.
      * Subscribers to the loadedDevices array will be notified after the
      * new list of devices is loaded.
      */

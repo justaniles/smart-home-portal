@@ -1,11 +1,11 @@
 import { RouterConfig } from "@angular/router";
 import { AuthGuard } from "../shared";
-import { HomeComponent } from "./home.component";
+import { HomeViewComponent } from "./home-view.component";
 
 export const HomeRoutes: RouterConfig = [
     {
         path: "",
-        component: HomeComponent,
+        component: HomeViewComponent,
         canActivate: [AuthGuard]
     },
     {

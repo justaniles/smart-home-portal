@@ -1,4 +1,4 @@
-import { ViewEncapsulation, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/forms';
 import { ROUTER_DIRECTIVES } from "@angular/router";
 
@@ -14,8 +14,7 @@ import {
     selector: '.pc-manage-homes',
     template: require('./manage-homes.html'),
     styles: [require('./manage-homes.scss')],
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES],
-    encapsulation: ViewEncapsulation.None
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class ManageHomesComponent implements OnInit {
 

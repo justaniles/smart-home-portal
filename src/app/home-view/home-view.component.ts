@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { DeviceCardComponent } from "./device-card";
 import {
     Device,
@@ -8,10 +8,10 @@ import {
 @Component({
     selector: 'home-view',
     directives: [DeviceCardComponent],
-    styles: [require('./home.scss')],
-    template: require('./home.html')
+    styles: [require('./home-view.scss')],
+    template: require('./home-view.html')
 })
-export class HomeComponent implements OnInit {
+export class HomeViewComponent implements OnInit {
 
     loading: boolean;
     devices: Device[];

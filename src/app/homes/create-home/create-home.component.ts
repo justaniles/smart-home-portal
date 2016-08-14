@@ -6,7 +6,7 @@ import {
     GriddleConstants,
     GriddleService,
     RequestMethod
-} from "../../shared";
+} from "../../shared/griddle";
 
 @Component({
     selector: '.pc-create-home',

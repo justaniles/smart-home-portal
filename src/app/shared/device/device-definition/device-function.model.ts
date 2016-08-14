@@ -14,7 +14,7 @@ export class DeviceFunction {
             PcDiagnostics.Log(
                 PcDiagnostics.LogType.Error,
                 "DeviceFunction.createFromObject",
-                "Cannot create-home a DeviceFunction from an empty object."
+                "Cannot create-home-view a DeviceFunction from an empty object."
             );
             return null;
         }
