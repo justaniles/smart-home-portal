@@ -1,0 +1,13 @@
+@import "./constants";
+
+.pc-form {
+    & > input {
+        height: 3rem;
+        width: 100%;
+        margin-bottom: $pd-normal;
+    }
+
+    & > button[type=submit] {
+        float: right;
+    }
+}

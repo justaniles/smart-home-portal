@@ -9,7 +9,7 @@ import {
 } from "../../shared/griddle";
 
 @Component({
-    selector: '.pc-create-home',
+    selector: 'create-home',
     template: require('./create-home.html'),
     styles: [require('./create-home.scss')],
     directives: [FORM_DIRECTIVES],

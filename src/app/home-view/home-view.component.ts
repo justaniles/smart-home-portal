@@ -26,5 +26,6 @@ export class HomeViewComponent implements OnInit {
                 this.devices = devices;
                 this.loading = false;
             });
+        this.devicesService.reloadDevices();
     }
 }

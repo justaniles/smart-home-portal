@@ -1,5 +1,6 @@
+import { Component } from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/forms';
-import { ViewEncapsulation, Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from "@angular/router";
 
 import { AuthService } from "../shared";
 import { GriddleConstants, GriddleService, RequestMethod } from "../shared/griddle";
@@ -7,11 +8,10 @@ import { GriddleConstants, GriddleService, RequestMethod } from "../shared/gridd
 import GriddleResponses = GriddleConstants.ResponseObjects;
 
 @Component({
-    selector: '.pc-login',
+    selector: 'pc-login',
     template: require('./login.html'),
     styles: [require('./login.scss')],
-    directives: [FORM_DIRECTIVES],
-    encapsulation: ViewEncapsulation.None
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class LoginComponent {
 

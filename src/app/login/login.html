@@ -1,13 +1,17 @@
-<form class="pc-login-container" (submit)="login()">
-    <input type="email"
-           name="email"
-           placeholder="Email"
-           [(ngModel)]="email"
-           class="pc-login-email form-control" />
-    <input type="password"
-           placeholder="Password"
-           name="password"
-           [(ngModel)]="password"
-           class="pc-login-password form-control" />
-    <button type="submit" class="pc-login-submit btn">Login</button>
-</form>
+<div class="pc-login-container">
+    <h2 class="pc-login-header">Login to Pancake</h2>
+    <form class="pc-form" (submit)="login()">
+        <input type="email"
+               name="email"
+               placeholder="Email"
+               [(ngModel)]="email"
+               class="form-control" />
+        <input type="password"
+               placeholder="Password"
+               name="password"
+               [(ngModel)]="password"
+               class="form-control" />
+        <button type="submit" class="pc-login-submit btn btn-outline-primary">Login</button>
+    </form>
+    <p class="text-muted">Don't have an account? <a [routerLink]="['/signup']">Create one now!</a></p>
+</div>

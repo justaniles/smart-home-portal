@@ -1,4 +1,4 @@
-@import "./shared/constants";
+@import "./shared/styles/constants";
 
 html, body {
     height: 100%;
@@ -9,14 +9,5 @@ html, body {
 .main {
     width: 100%;
     height: 100%;
-}
-
-.pc-form {
-    width: $form-width;
-
-    & > input {
-        height: 3rem;
-        width: 100%;
-        margin-bottom: $pd-normal;
-    }
+    min-height: 32rem; // to prevent centered content from getting lost
 }

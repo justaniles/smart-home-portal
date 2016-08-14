@@ -1,24 +1,21 @@
-.pc-login {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import "../shared/styles/constants";
+@import "../shared/styles/forms";
+
+:host {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .pc-login-container {
-  position: relative;
-  top: -10%;
-  display: block;
-
-  width: 28em;
+    position: relative;
+    top: -5%;
+    width: $form-width;
 }
 
-.pc-login-container > * {
-  height: 3em;
-  width: 100%;
+.pc-login-header {
+    margin-bottom: $pd-medium;
 }
 
-.pc-login-email, .pc-login-password {
-  margin-bottom: 2em;
-}
