@@ -1,0 +1,12 @@
+<h2 class="pc-form-header" *ngIf="options.formTitle">{{options.formTitle}}</h2>
+<form class="pc-form" (submit)="submitForm()">
+    <template ngFor let-field [ngForOf]="fields">
+        <input *ngIf="field.fieldType == 0"
+               type="{{field.type}}"
+               name="{{field.name}}"
+               placeholder="{{field.placeholder}}"
+               [(ngModel)]="field.value"
+               class="form-control"/>
+    </template>
+    <button type="submit" class="btn btn-outline-primary">{{options.submitText}}</button>
+</form>
